@@ -28,12 +28,12 @@ OWL = Namespace('http://www.w3.org/2002/07/owl#')
 SPDX = Namespace('http://spdx.org/rdf/terms#')
 SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
 VOID = Namespace('http://rdfs.org/ns/void#')
+
+# own namespaces
 MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/')
-
-# own namespace
+MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-theme/')
 DCATDE = Namespace("http://dcat-ap.de/def/dcatde/1_0/")
-
-dcat_theme_prefix = "http://publications.europa.eu/resource/authority/data-theme/"
+DCATDE_LIC = Namespace("http://dcat-ap.de/def/licenses/")
 
 namespaces = {
     # copied from ckanext.dcat.profiles
@@ -50,6 +50,8 @@ namespaces = {
     'owl': OWL,
     'void': VOID,
     'mdrlang': MDRLANG ,
+    'mdrtheme': MDRTHEME ,
+    'dcatde-lic': DCATDE_LIC ,
     
     # own extension
     'dcatde': DCATDE
@@ -121,7 +123,12 @@ class DCATdeBerlinProfile(RDFProfile):
             dcat_groups = self.category_mapping[group['name']]
             if dcat_groups is not None:
                 for dcat_group in dcat_groups:
-                    g.add((dataset_ref, DCAT.theme, URIRef(dcat_theme_prefix + dcat_group.upper())))
+                    log.debug("foobar")
+                    g.add( (dataset_ref, DCAT.theme, MDRTHEME[dcat_group]) )
+                    # MDRTHEME.xyz is not dereferencable, so we add some additional
+                    # triples that link to the downloadable source:
+                    g.add( (MDRTHEME[dcat_group], RDFS.isDefinedBy, URIRef(MDRTHEME)) )
+                    g.add( (URIRef(MDRTHEME), VOID.dataDump, URIRef("http://publications.europa.eu/mdr/resource/authority/data-theme/skos-ap-eu/data-theme-skos-ap-act.rdf")) )
 
 
 
@@ -133,7 +140,7 @@ class DCATdeBerlinProfile(RDFProfile):
         # Nr. 59 - Sprache
         g.add( (dataset_ref, DCT.language, MDRLANG.DEU) )
         # MDRLANG.DEU is not dereferencable, so we add some additional
-        # triples:
+        # triples that link to the downloadable source:
         g.add( (MDRLANG.DEU, RDFS.isDefinedBy, URIRef(MDRLANG)) )
         g.add( (URIRef(MDRLANG), VOID.dataDump, URIRef("http://publications.europa.eu/mdr/resource/authority/language/skos-ap-eu/languages-skos-ap-act.rdf")) )
 
@@ -161,7 +168,7 @@ class DCATdeBerlinProfile(RDFProfile):
         # Nr. 75 - dcatde:legalbasisText
 
         # TODO: Nachfrage Askar/Özdemir: kann man hier durchweg das Berliner
-        # e-Government Gesetz anführen?
+        # e-Government Gesetz anführen? (email am 05.03.2018)
 
         # License
         dcat_de_license = None
@@ -176,5 +183,9 @@ class DCATdeBerlinProfile(RDFProfile):
                 # Match distribution in graph and distribution in ckan-dict
                 if unicode(distribution) == resource_uri(resource_dict):
                     if dcat_de_license:
-                        g.add( (distribution, DCT.license, URIRef(dcat_de_license)) )
+                        g.add( (distribution, DCT.license, DCATDE_LIC[dcat_de_license]) )
+                        # DCATDE_LIC.xyz is not dereferencable, so we add some additional
+                        # triples that link to the downloadable source:
+                        g.add( (DCATDE_LIC[dcat_de_license], RDFS.isDefinedBy, URIRef(DCATDE_LIC)) )
+                        g.add( (URIRef(DCATDE_LIC), VOID.dataDump, URIRef("http://www.dcat-ap.de/def/licenses/1_0.rdf")) )
 
