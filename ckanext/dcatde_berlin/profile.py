@@ -124,7 +124,6 @@ class DCATdeBerlinProfile(RDFProfile):
             dcat_groups = self.category_mapping[group['name']]
             if dcat_groups is not None:
                 for dcat_group in dcat_groups:
-                    log.debug("foobar")
                     g.add( (dataset_ref, DCAT.theme, MDRTHEME[dcat_group]) )
                     # MDRTHEME.xyz is not dereferencable, so we add some additional
                     # triples that link to the downloadable source:
