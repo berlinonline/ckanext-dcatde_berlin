@@ -8,26 +8,6 @@
 .. image:: https://coveralls.io/repos/knudmoeller/ckanext-dcatde_berlin/badge.svg
   :target: https://coveralls.io/r/knudmoeller/ckanext-dcatde_berlin
 
-.. image:: https://pypip.in/download/ckanext-dcatde_berlin/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-dcatde_berlin/
-    :alt: Downloads
-
-.. image:: https://pypip.in/version/ckanext-dcatde_berlin/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dcatde_berlin/
-    :alt: Latest Version
-
-.. image:: https://pypip.in/py_versions/ckanext-dcatde_berlin/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dcatde_berlin/
-    :alt: Supported Python versions
-
-.. image:: https://pypip.in/status/ckanext-dcatde_berlin/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dcatde_berlin/
-    :alt: Development Status
-
-.. image:: https://pypip.in/license/ckanext-dcatde_berlin/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dcatde_berlin/
-    :alt: License
-
 =============
 ckanext-dcatde_berlin
 =============
