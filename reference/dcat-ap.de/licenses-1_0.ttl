@@ -1,0 +1,307 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcatde-lic: <http://dcat-ap.de/def/licenses/> .
+@prefix : <http://dcat-ap.de/def/licenses> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dcat-ap.de/def/licenses>
+    a owl:Ontology ;
+    rdfs:comment "Liste der Lizenzen, die im Feld dct:license einer DCAT-AP.de-konformen dcat:distribution erlaubt sind."@de ;
+    rdfs:label "Liste der Lizenzen"@de ;
+    owl:versionInfo "1.0"@de .
+
+dcatde-lic:apache
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "FreieSoftwareLizenz der Apache Software Foundation, keine CopyleftLizenz"@de ;
+    rdfs:isDefinedBy <http://www.apache.org/licenses> ;
+    rdfs:label "apache"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "apache" .
+
+dcatde-lic:bsd
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "BSD Lizenz"@de ;
+    rdfs:isDefinedBy <http://www.opensource.org/licenses/bsd-license.php> ;
+    rdfs:label "bsdlicense"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "bsd-license" .
+
+dcatde-lic:cc-by
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung (CCBY)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/cc-by> ;
+    rdfs:label "ccby"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by" .
+
+<http://dcat-ap.de/def/licenses/cc-by-de/3_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung 3.0 (CC-BY)"@de ;
+    rdfs:isDefinedBy <https://creativecommons.org/licenses/by/3.0/de/> ;
+    rdfs:label "ccbyde/3_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-3.0" .
+
+<http://dcat-ap.de/def/licenses/cc-by-nc-de/4_0>
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung Nichtkommerziell 4.0 (CCBY)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-nc/4.0/> ;
+    rdfs:label "ccbync/4_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-nc-4.0" .
+
+dcatde-lic:cc-by-nd
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung Keine Bearbeitung (CC-BY-ND)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-nd/3.0/> ;
+    rdfs:label "ccbynd"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-nd" .
+
+<http://dcat-ap.de/def/licenses/cc-by-nd/3_0>
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung Keine Bearbeitung 3.0 (CC-BY-ND)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-nd/3.0/> ;
+    rdfs:label "ccbynd/3_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-nd-3.0" .
+
+<http://dcat-ap.de/def/licenses/cc-by-nd/4_0>
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung Keine Bearbeitung 4.0 International (CC BYND 4.0)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-nd/4.0/> ;
+    rdfs:label "ccbynd/4_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-nd-4.0" .
+
+dcatde-lic:cc-by-sa
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Attribution ShareAlike (ccbysa)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/cc-by-sa> ;
+    rdfs:label "ccbysa"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-sa" .
+
+<http://dcat-ap.de/def/licenses/cc-by-sa/4_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Attribution ShareAlike 4.0 (CCBYSA4.0)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-sa/4.0/> ;
+    rdfs:label "ccbysa/4_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-sa-4.0" .
+
+<http://dcat-ap.de/def/licenses/cc-by/4_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung  4.0 (CCBY)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:label "ccby/4_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-by-4.0" .
+
+dcatde-lic:cc-nc
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung-Nicht kommerziell"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/licenses/by-nc/2.0/> ;
+    rdfs:label "cc-nc"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-nc" .
+
+<http://dcat-ap.de/def/licenses/cc-nc/3_0>
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons Namensnennung-Nicht kommerziell 3.0 "@de ;
+    rdfs:isDefinedBy <https://creativecommons.org/licenses/by-nc/3.0/de/> ;
+    rdfs:label "cc-nc/3_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-nc-3.0" .
+
+<http://dcat-ap.de/def/licenses/cc-pdm/1_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Public Domain Mark 1.0 (PDM)"@de ;
+    rdfs:isDefinedBy <http://creativecommons.org/publicdomain/mark/1.0/> ;
+    rdfs:label "ccpdm/10"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-pdm-1.0" .
+
+dcatde-lic:cc-zero
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Creative Commons CCZero (CC0)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/cc-zero> ;
+    rdfs:label "cczero"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "cc-zero" .
+
+<http://dcat-ap.de/def/licenses/dl-by-de/1_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Datenlizenz Deutschland Namensnennung 1.0"@de ;
+    rdfs:isDefinedBy <https://www.govdata.de/dl-de/by-1-0> ;
+    rdfs:label "dlbyde/1_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "dl-de-by-1.0" .
+
+<http://dcat-ap.de/def/licenses/dl-by-de/2_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Datenlizenz Deutschland Namensnennung 2.0"@de ;
+    rdfs:isDefinedBy <https://www.govdata.de/dl-de/by-2-0> ;
+    rdfs:label "dlbyde/2_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "dl-de-by-2.0" .
+
+<http://dcat-ap.de/def/licenses/dl-by-nc-de/1_0>
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Datenlizenz Deutschland Namensnennung nicht-kommerziell 1.0"@de ;
+    rdfs:isDefinedBy <https://www.govdata.de/dl-de/by-nc-1-0> ;
+    rdfs:label "dlbyncde/1_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "dl-de-by-nc-1.0" .
+
+<http://dcat-ap.de/def/licenses/dl-zero-de/2_0>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Datenlizenz Deutschland – Zero – Version 2.0"@de ;
+    rdfs:isDefinedBy <https://www.govdata.de/dl-de/zero-2-0> ;
+    rdfs:label "dlzerode/2_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "dl-de-zero-2.0" .
+
+<http://dcat-ap.de/def/licenses/geoNutz/20131001>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Landes Berlin"@de ;
+    rdfs:isDefinedBy <http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf> ;
+    rdfs:label "geoNutz/20131001"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "geonutz-be-2013-10-01" .
+
+<http://dcat-ap.de/def/licenses/geonutz/20130319>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Bundes"@de ;
+    rdfs:isDefinedBy <http://www.geodatenzentrum.de/docpdf/geonutzv.pdf> ;
+    rdfs:label "geoNutz/20130319"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "geonutzv-de-2013-03-19" .
+
+dcatde-lic:gfdl
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "GNU Free Documentation License"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/gfdl> ;
+    rdfs:label "gfdl"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "gfdl" .
+
+<http://dcat-ap.de/def/licenses/gpl/30>
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "GNU General Public License version 3.0 (GPLv3)"@de ;
+    rdfs:isDefinedBy <http://www.opensource.org/licenses/gpl-3.0.html> ;
+    rdfs:label "gpl/3_0"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "gpl-3.0" .
+
+dcatde-lic:mozilla
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Mozilla Public License 1.0 (MPL)"@de ;
+    rdfs:isDefinedBy <http://www.mozilla.org/MPL> ;
+    rdfs:label "mozilla"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "mozilla" .
+
+dcatde-lic:od-bc
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Open Data Commons Attribution License (ODCBY)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/odc-by> ;
+    rdfs:label "odby"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "odc-by" .
+
+dcatde-lic:od-bl
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Open Data Commons Open Database License (ODbL)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/odc-odbl> ;
+    rdfs:label "odbl"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "odc-odbl" .
+
+dcatde-lic:odc-pddl
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Open Data Commons Public Domain Dedication and Licence (PDDL)"@de ;
+    rdfs:isDefinedBy <http://www.opendefinition.org/licenses/odc-pddl> ;
+    rdfs:label "odcpddl"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "odc-pddl" .
+
+dcatde-lic:official-work
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Amtliches Werk, lizenzfrei nach §5 Abs. 1 UrhG"@de ;
+    rdfs:isDefinedBy <http://www.gesetze-im-internet.de/urhg/__5.html> ;
+    rdfs:label "officialWork"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "official-work" .
+
+dcatde-lic:other-closed
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Andere geschlossene Lizenz"@de ;
+    rdfs:label "otherclosed"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "other-closed" .
+
+dcatde-lic:other-commercial
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Andere kommerzielle Lizenz"@de ;
+    rdfs:label "othercommercial"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "app_commercial" .
+
+dcatde-lic:other-freeware
+    dct:type <http://dcat-ap.de/def/geschlossen> ;
+    a owl:Class ;
+    rdfs:comment "Andere Freeware Lizenz"@de ;
+    rdfs:label "otherfreeware"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "app_freeware" .
+
+dcatde-lic:other-open
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Andere offene Lizenz"@de ;
+    rdfs:label "otheropen"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "other-open" .
+
+dcatde-lic:other-opensource
+    dct:type <http://dcat-ap.de/def/offen> ;
+    a owl:Class ;
+    rdfs:comment "Andere Open Source Lizenz"@de ;
+    rdfs:label "otheropensource"@de ;
+    rdfs:subClassOf <http://dcat-ap.de/def/licenses> ;
+    adms:identifier "app_opensource" .
+
