@@ -33,9 +33,17 @@ ckanext-dcatde_berlin
 =============
 
 .. Put a description of your extension here:
-   This plugin implements dcat-ap.de for the Berlin open data portal
-   daten.berlin.de.
+This plugin implements dcat-ap.de_ for the Berlin open data portal
+daten.berlin.de_.
 
+It defines a profile ``dcatap_de`` that needs to be layered right on top of ``euro_dcat_ap``, as defined in ``ckanext-dcat`` (ckanextdcat_).
+
+``ckanext-dcatde_berlin`` draws heavily on ``ckanext-dcatde`` (ckanext-dcatde_), but is separate, because the underlying CKAN schema isn't quite the same, and because ``ckanext-dcatde_berlin`` requires the CKAN DB to be converted before it can be used.
+
+.. _ckanextdcat: https://github.com/ckan/ckanext-dcat
+.. _dcat-ap.de: http://dcat-ap.de
+.. _daten.berlin.de: https://daten.berlin.de
+.. _ckanext-dcatde: https://github.com/GovDataOfficial/ckanext-dcatde
 
 ------------
 Requirements
@@ -77,11 +85,12 @@ To install ckanext-dcatde_berlin:
 Config Settings
 ---------------
 
-Document any optional config settings here. For example::
+In the ``[app:main]`` section of your CKAN config file, add the following lines::
 
-    # The minimum number of hours to wait before re-checking a resource
-    # (optional, default: 24).
-    ckanext.dcatde_berlin.some_setting = some_default_value
+    ## DCAT
+    ckanext.dcat.enable_content_negotiation = True
+    ckanext.dcat.rdf.profiles = euro_dcat_ap dcatap_de
+    ckanext.dcatde.contributorid = berlinOpenData
 
 
 ------------------------
