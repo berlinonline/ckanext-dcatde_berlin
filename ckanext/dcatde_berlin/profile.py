@@ -115,13 +115,22 @@ class DCATdeBerlinProfile(RDFProfile):
             g.add( (publisher_ref, FOAF.homepage, URIRef(publisher_url)) )
         g.add( (dataset_ref, DCT.publisher, publisher_ref) )
 
+        # Nr. 45 - Kategorie
+        groups = self._get_dataset_value(dataset_dict, 'groups')
+        for group in groups:
+            dcat_groups = self.category_mapping[group['name']]
+            if dcat_groups is not None:
+                for dcat_group in dcat_groups:
+                    g.add((dataset_ref, DCAT.theme, URIRef(dcat_theme_prefix + dcat_group.upper())))
+
+
+
         # Nr. 48 - conformsTo (Application Profile der Metadaten)
         g.add( (dataset_ref, DCT.conformsTo, URIRef(DCATDE)) )
 
         # Nr. 49 - 52 (Urheber, Verwalter, Bearbeiter, Autor) - we don't know this
 
         # Nr. 59 - Sprache
-
         g.add( (dataset_ref, DCT.language, MDRLANG.DEU) )
         # MDRLANG.DEU is not dereferencable, so we add some additional
         # triples:
@@ -160,14 +169,6 @@ class DCATdeBerlinProfile(RDFProfile):
             ogd_license_code = dataset_dict['license_id']
             if ogd_license_code in self.license_mapping:
                 dcat_de_license = self.license_mapping[ogd_license_code]['URI']
-
-        # Groups
-        groups = self._get_dataset_value(dataset_dict, 'groups')
-        for group in groups:
-            dcat_groups = self.category_mapping[group['name']]
-            if dcat_groups is not None:
-                for dcat_group in dcat_groups:
-                    g.add((dataset_ref, DCAT.theme, URIRef(dcat_theme_prefix + dcat_group.upper())))
 
         # Enhance Distributions
         for resource_dict in dataset_dict.get('resources', []):
