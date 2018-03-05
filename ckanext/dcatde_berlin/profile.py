@@ -169,8 +169,8 @@ class DCATdeBerlinProfile(RDFProfile):
 
         legalbasisText = self.legalBasis['default']
         org = dataset_dict.get('organization', {})
-        if org and org['name'] in self.legalBasis:
-            legalbasisText = self.legalBasis[org['name']]
+        if org and org['name'] in self.legalBasis['mapping']:
+            legalbasisText = self.legalBasis['mapping'][org['name']]
         g.add( (dataset_ref, DCATDE.legalbasisText, Literal(legalbasisText)) )
 
         # License

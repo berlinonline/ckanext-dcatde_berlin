@@ -1,4 +1,6 @@
 {
-  "default": "§ 13 eGovGBln" ,
-  "harvester-fis-broker": "GeoNutzV-Berlin: http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf"
+  "default": "§ 13 E-Government-Gesetz Berlin (EGovG Bln)" ,
+  "mapping": {
+    "harvester-fis-broker": "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Landes Berlin (GeoNutzV-Berlin)"
+  }
 }
