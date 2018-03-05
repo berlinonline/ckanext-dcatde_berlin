@@ -41,9 +41,9 @@ It defines a profile ``dcatap_de`` that needs to be layered right on top of ``eu
 ``ckanext-dcatde_berlin`` draws heavily on ``ckanext-dcatde`` (ckanext-dcatde_), but is separate, because the underlying CKAN schema isn't quite the same, and because ``ckanext-dcatde_berlin`` requires the CKAN DB to be converted before it can be used.
 
 .. _ckanextdcat: https://github.com/ckan/ckanext-dcat
-.. _dcat-ap.de: http://dcat-ap.de
-.. _daten.berlin.de: https://daten.berlin.de
-.. _ckanext-dcatde: https://github.com/GovDataOfficial/ckanext-dcatde
+   _dcat-ap.de: http://dcat-ap.de
+   _daten.berlin.de: https://daten.berlin.de
+   _ckanext-dcatde: https://github.com/GovDataOfficial/ckanext-dcatde
 
 ------------
 Requirements
