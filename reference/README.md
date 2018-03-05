@@ -1,12 +1,25 @@
-# Metadata Registry - Named Authority Lists
+# Cannot Follow your Nose
 
-This folder contains RDF representations of some of the [Named Authority Lists](http://publications.europa.eu/mdr/authority/index.html) from the EU's Metadata Registry, which are used as codelists for DCAT-AP.
+This folder contains RDF representations of codelists which are used by DCAT-AP and DCAT-AP.de.
 
-They're included here because the URIs used in the NALs are sadly not dereferenceable, so they're hard to look up without searching for them first. Also, the original versions are in RDF/XML, while they are included here as Turtle.
+They're included here because sadly, despite the fact that they're made available as RDF, the URIs used for the codes are not dereferenceable. This means you cannot "follow your nose" when you encounter them in our data. You have to manually look for them with a search engine to find the definitions. Also, the original versions are in RDF/XML, while they are included here as Turtle, which is much more readable.
+
+## DCAT-AP.de Vokabulare
+
+The common prefix is: `http://dcat-ap.de/def/`.
+
+| URI prefix | Filename | Web source |
+| ---------- | -------- | ---------- |
+| `licenses/`  | [`licenses-1_0.ttl`](dcat-ap.de/licenses-1_0.ttl) | [Lizenzen](http://www.dcat-ap.de/def/licenses/) |
+
+
+## Metadata Registry - Named Authority Lists
+
+[Named Authority Lists](http://publications.europa.eu/mdr/authority/index.html) from the EU's Metadata Registry.
 
 The common prefix is: `http://publications.europa.eu/resource/authority/`
 
 | URI prefix | Filename | Web source |
 | ---------- | -------- | ---------- |
-| `language/`  | [`languages-skos-ap-act.ttl`](../blob/master/reference/mdr-nal/languages-skos-ap-act.ttl) | [Language](http://publications.europa.eu/mdr/authority/language/index.html) |
-| `data-theme/` | [`data-theme-skos-ap-act.ttl`](../blob/master/reference/mdr-nal/data-theme-skos-ap-act.ttl) | [Publication Theme](http://publications.europa.eu/mdr/authority/data-theme/index.html) |
+| `language/`  | [`languages-skos-ap-act.ttl`](mdr-nal/languages-skos-ap-act.ttl) | [Language](http://publications.europa.eu/mdr/authority/language/index.html) |
+| `data-theme/` | [`data-theme-skos-ap-act.ttl`](mdr-nal/data-theme-skos-ap-act.ttl) | [Publication Theme](http://publications.europa.eu/mdr/authority/data-theme/index.html) |
