@@ -42,6 +42,7 @@ Requirements
 ------------
 
 ``ckanext-dcatde_berlin`` has been tested with:
+
 - CKAN v2.6.2
 - ``ckanext-dcat``: v0.6.0
 
