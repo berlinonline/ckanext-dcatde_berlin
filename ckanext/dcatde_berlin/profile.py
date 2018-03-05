@@ -51,10 +51,8 @@ namespaces = {
     'void': VOID,
     'mdrlang': MDRLANG ,
     'mdrtheme': MDRTHEME ,
-    'dcatde-lic': DCATDE_LIC ,
-    
-    # own extension
-    'dcatde': DCATDE
+    'dcatde': DCATDE ,
+    'dcatde-lic': DCATDE_LIC
 }
 
 class DCATdeBerlinProfile(RDFProfile):
@@ -77,6 +75,9 @@ class DCATdeBerlinProfile(RDFProfile):
 
         with open(os.path.join(dir_path, "mappings", "geo_coverage.json")) as json_data:
             self.geo_coverage = json.load(json_data)
+
+        with open(os.path.join(dir_path, "mappings", "org2legalBasis.json")) as json_data:
+            self.legalBasis = json.load(json_data)
 
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
@@ -149,8 +150,8 @@ class DCATdeBerlinProfile(RDFProfile):
         # TODO: geharvestete Datensätze kennzeichnen?
 
         # Nr. 66 - dct:spatial via geonames reference
-        # Nr. 73 - dcatde:politicalGeocodingURI
         # Nr. 72 - dcatde:politicalGeocodingLevelURI
+        # Nr. 73 - dcatde:politicalGeocodingURI
         # passt leider nur bedingt auf Berlin (nur federal, state, administrativeDistrict)
 
         geographical_coverage = self._get_dataset_value(dataset_dict, 'geographical_coverage')
@@ -167,8 +168,11 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Nr. 75 - dcatde:legalbasisText
 
-        # TODO: Nachfrage Askar/Özdemir: kann man hier durchweg das Berliner
-        # e-Government Gesetz anführen? (email am 05.03.2018)
+        legalbasisText = self.legalBasis['default']
+        org = dataset_dict.get('organization', {})
+        if org and org['name'] in self.legalBasis:
+            legalbasisText = self.legalBasis[org['name']]
+        g.add( (dataset_ref, DCATDE.legalbasisText, Literal(legalbasisText)) )
 
         # License
         dcat_de_license = None
