@@ -21,11 +21,11 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/knudmoeller/ckanext-dcatde_berlin',
+    url='https://github.com/berlinonline/ckanext-dcatde_berlin',
 
     # Author details
     author='''Knud Möller''',
-    author_email='''knud@datalysator.com''',
+    author_email='''knud.moeller@berlinonline.de''',
 
     # Choose your license
     license='AGPL',
@@ -48,7 +48,7 @@ setup(
 
 
     # What does your project relate to?
-    keywords='''CKAN, dcat, dcat-de''',
+    keywords='''CKAN, dcat, dcat-ap.de''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
