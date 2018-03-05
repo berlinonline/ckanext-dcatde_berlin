@@ -1,0 +1,179 @@
+# -*- coding: utf-8 -*-
+
+import os
+import json
+import logging
+import pylons
+
+from rdflib import URIRef, BNode, Literal
+from rdflib.namespace import Namespace
+from rdflib.namespace import RDF, RDFS
+
+from ckanext.dcat.profiles import RDFProfile
+from ckanext.dcat.utils import resource_uri
+
+log = logging.getLogger(__name__)
+
+# copied from ckanext.dcat.profiles
+DCT = Namespace("http://purl.org/dc/terms/")
+DCAT = Namespace("http://www.w3.org/ns/dcat#")
+ADMS = Namespace("http://www.w3.org/ns/adms#")
+VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
+FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+SCHEMA = Namespace('http://schema.org/')
+TIME = Namespace('http://www.w3.org/2006/time')
+LOCN = Namespace('http://www.w3.org/ns/locn#')
+GSP = Namespace('http://www.opengis.net/ont/geosparql#')
+OWL = Namespace('http://www.w3.org/2002/07/owl#')
+SPDX = Namespace('http://spdx.org/rdf/terms#')
+SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
+VOID = Namespace('http://rdfs.org/ns/void#')
+MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/')
+
+# own namespace
+DCATDE = Namespace("http://dcat-ap.de/def/dcatde/1_0/")
+
+dcat_theme_prefix = "http://publications.europa.eu/resource/authority/data-theme/"
+
+namespaces = {
+    # copied from ckanext.dcat.profiles
+    'dct': DCT,
+    'dcat': DCAT,
+    'adms': ADMS,
+    'vcard': VCARD,
+    'foaf': FOAF,
+    'schema': SCHEMA,
+    'time': TIME,
+    'skos': SKOS,
+    'locn': LOCN,
+    'gsp': GSP,
+    'owl': OWL,
+    'void': VOID,
+    'mdrlang': MDRLANG ,
+    
+    # own extension
+    'dcatde': DCATDE
+}
+
+class DCATdeBerlinProfile(RDFProfile):
+    '''
+    An RDF profile for the that implements DCAT-AP.de, specifically
+    for the Berlin data portal.
+
+    It requires the European DCAT-AP profile (`euro_dcat_ap`)
+    '''
+
+    def __init__(self, graph, compatibility_mode=False):
+        path = os.path.abspath(__file__)
+        dir_path = os.path.dirname(path)
+
+        with open(os.path.join(dir_path, "mappings", "categories.json")) as json_data:
+            self.category_mapping = json.load(json_data)
+
+        with open(os.path.join(dir_path, "mappings", "licenses.json")) as json_data:
+            self.license_mapping = json.load(json_data)
+
+        with open(os.path.join(dir_path, "mappings", "geo_coverage.json")) as json_data:
+            self.geo_coverage = json.load(json_data)
+
+        super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
+
+    def parse_dataset(self, dataset_dict, dataset_ref):
+
+        # We're not interested in parsing RDF datasets at the moment
+
+        return dataset_dict
+
+    def graph_from_dataset(self, dataset_dict, dataset_ref):
+
+        g = self.g
+
+        # bind namespaces to have readable names in RDF Document
+        for prefix, namespace in namespaces.iteritems():
+            g.bind(prefix, namespace)
+
+        # Nr. 40 - Contributor
+        contributorId = pylons.config.get('ckanext.dcatde.contributorid')
+        if contributorId:
+            g.add( (dataset_ref, DCATDE.contributorID, Literal(contributorId) ))
+
+        # Nr. 41 - Contact Point
+        # If a maintainer name is given, set this to be the name of the 
+        # contact point. If not, use name of author/VÖ Stelle (ckanext-dcat default).
+        for contactPoint_ref in g.objects(dataset_ref, DCAT.contactPoint):
+            for email in g.objects(contactPoint_ref, VCARD.hasEmail):
+                g.remove( (contactPoint_ref, VCARD.hasEmail, Literal(email)) )
+                g.add( (contactPoint_ref, VCARD.hasEmail, URIRef("mailto:" + email)) )
+
+        # Nr. 44 - Publisher
+        publisher_ref = BNode()
+        publisher_name = self._get_dataset_value(dataset_dict, 'author')
+        publisher_url = self._get_dataset_value(dataset_dict, 'url')
+        g.add( (publisher_ref, RDF.type, FOAF.Organization) )
+        g.add( (publisher_ref, FOAF.name, Literal(publisher_name)) )
+        if publisher_url:
+            g.add( (publisher_ref, FOAF.homepage, URIRef(publisher_url)) )
+        g.add( (dataset_ref, DCT.publisher, publisher_ref) )
+
+        # Nr. 48 - conformsTo (Application Profile der Metadaten)
+        g.add( (dataset_ref, DCT.conformsTo, URIRef(DCATDE)) )
+
+        # Nr. 49 - 52 (Urheber, Verwalter, Bearbeiter, Autor) - we don't know this
+
+        # Nr. 59 - Sprache
+
+        g.add( (dataset_ref, DCT.language, MDRLANG.DEU) )
+        # MDRLANG.DEU is not dereferencable, so we add some additional
+        # triples:
+        g.add( (MDRLANG.DEU, RDFS.isDefinedBy, URIRef(MDRLANG)) )
+        g.add( (URIRef(MDRLANG), VOID.dataDump, URIRef("http://publications.europa.eu/mdr/resource/authority/language/skos-ap-eu/languages-skos-ap-act.rdf")) )
+
+        # Nr. 61 - Provenienz
+
+        # TODO: geharvestete Datensätze kennzeichnen?
+
+        # Nr. 66 - dct:spatial via geonames reference
+        # Nr. 73 - dcatde:politicalGeocodingURI
+        # Nr. 72 - dcatde:politicalGeocodingLevelURI
+        # passt leider nur bedingt auf Berlin (nur federal, state, administrativeDistrict)
+
+        geographical_coverage = self._get_dataset_value(dataset_dict, 'geographical_coverage')
+        if geographical_coverage in self.geo_coverage:
+            coverage_object = self.geo_coverage[geographical_coverage]
+            if 'geonames' in coverage_object:
+                g.add( (dataset_ref, DCT.spatial, URIRef(coverage_object['geonames'])) )
+            if 'politicalGeocodingURI' in coverage_object:
+                g.add( (dataset_ref, DCATDE.politicalGeocodingURI, URIRef(coverage_object['politicalGeocodingURI'])) )
+            if 'politicalGeocodingLevelURI' in coverage_object:
+                g.add( (dataset_ref, DCATDE.politicalGeocodingLevelURI, URIRef(coverage_object['politicalGeocodingLevelURI'])) )
+
+
+
+        # Nr. 75 - dcatde:legalbasisText
+
+        # TODO: Nachfrage Askar/Özdemir: kann man hier durchweg das Berliner
+        # e-Government Gesetz anführen?
+
+        # License
+        dcat_de_license = None
+        if 'license_id' in dataset_dict:
+            ogd_license_code = dataset_dict['license_id']
+            if ogd_license_code in self.license_mapping:
+                dcat_de_license = self.license_mapping[ogd_license_code]['URI']
+
+        # Groups
+        groups = self._get_dataset_value(dataset_dict, 'groups')
+        for group in groups:
+            dcat_groups = self.category_mapping[group['name']]
+            if dcat_groups is not None:
+                for dcat_group in dcat_groups:
+                    g.add((dataset_ref, DCAT.theme, URIRef(dcat_theme_prefix + dcat_group.upper())))
+
+        # Enhance Distributions
+        for resource_dict in dataset_dict.get('resources', []):
+            for distribution in g.objects(dataset_ref, DCAT.distribution):
+                # Match distribution in graph and distribution in ckan-dict
+                if unicode(distribution) == resource_uri(resource_dict):
+                    if dcat_de_license:
+                        g.add( (distribution, DCT.license, URIRef(dcat_de_license)) )
+
