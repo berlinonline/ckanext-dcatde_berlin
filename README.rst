@@ -2,11 +2,11 @@
    these badges work. The necessary Travis and Coverage config files have been
    generated for you.
 
-.. image:: https://travis-ci.org/knudmoeller/ckanext-dcatde_berlin.svg?branch=master
-    :target: https://travis-ci.org/knudmoeller/ckanext-dcatde_berlin
+.. image:: https://travis-ci.org/berlinonline/ckanext-dcatde_berlin.svg?branch=master
+    :target: https://travis-ci.org/berlinonline/ckanext-dcatde_berlin
 
-.. image:: https://coveralls.io/repos/knudmoeller/ckanext-dcatde_berlin/badge.svg
-  :target: https://coveralls.io/r/knudmoeller/ckanext-dcatde_berlin
+.. image:: https://coveralls.io/repos/berlinonline/ckanext-dcatde_berlin/badge.svg
+  :target: https://coveralls.io/r/berlinonline/ckanext-dcatde_berlin
 
 =============
 ckanext-dcatde_berlin
