@@ -41,9 +41,9 @@ ckanext-dcatde_berlin
 Requirements
 ------------
 
-`ckanext-dcatde_berlin` has been tested with:
-* CKAN v2.6.2
-* `ckanext-dcat`: v0.6.0
+``ckanext-dcatde_berlin`` has been tested with:
+- CKAN v2.6.2
+- ``ckanext-dcat``: v0.6.0
 
 
 ------------
@@ -60,7 +60,7 @@ To install ckanext-dcatde_berlin:
 
      . /usr/lib/ckan/default/bin/activate
 
-2. Clone ``ckanext-dcatde_berlin`` into your CKAN `src` folder from the git 
+2. Clone ``ckanext-dcatde_berlin`` into your CKAN ``src`` folder from the git 
    repository.
 
 3. Add ``dcatde_berlin`` to the ``ckan.plugins`` setting in your CKAN
