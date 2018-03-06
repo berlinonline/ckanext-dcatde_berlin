@@ -21,5 +21,6 @@ The common prefix is: `http://publications.europa.eu/resource/authority/`
 
 | URI prefix | Filename | Web source |
 | ---------- | -------- | ---------- |
-| `language/`  | [`languages-skos-ap-act.ttl`](mdr-nal/languages-skos-ap-act.ttl) | [Language](http://publications.europa.eu/mdr/authority/language/index.html) |
-| `data-theme/` | [`data-theme-skos-ap-act.ttl`](mdr-nal/data-theme-skos-ap-act.ttl) | [Publication Theme](http://publications.europa.eu/mdr/authority/data-theme/index.html) |
+| `language/`  | [`languages-skos-ap-act.ttl`](mdr-nal/languages-skos-ap-act.ttl) | [Language](http://publications.europa.eu/mdr/authority/language/) |
+| `data-theme/` | [`data-theme-skos-ap-act.ttl`](mdr-nal/data-theme-skos-ap-act.ttl) | [Publication Theme](http://publications.europa.eu/mdr/authority/data-theme/) |
+| `file-type/` | [`filetypes-skos-ap-act.ttl`](mdr-nal/filetypes-skos-ap-act.ttl) | [File Type](http://publications.europa.eu/mdr/authority/file-type/) |
