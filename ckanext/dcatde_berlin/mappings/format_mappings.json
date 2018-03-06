@@ -1,0 +1,506 @@
+{
+    "ARC": {
+        "label": "ARC", 
+        "media_type": "application/octet-stream"
+    }, 
+    "ARC_GZ": {
+        "label": "ARC GZ", 
+        "media_type": "application/gzip"
+    }, 
+    "ATOM": {
+        "label": "Atom Feed", 
+        "media_type": "application/atom+xml"
+    }, 
+    "AZW": {
+        "label": "Amazon Kindle eBook", 
+        "media_type": "application/vnd.amazon.ebook"
+    }, 
+    "BIN": {
+        "label": "Binary Data", 
+        "media_type": "application/octet-stream"
+    }, 
+    "BMP": {
+        "label": "Bitmap Image File", 
+        "media_type": "image/x-ms-bmp"
+    }, 
+    "BWF": {
+        "label": "BWF", 
+        "media_type": "audio/vnd.wave"
+    }, 
+    "CSS": {
+        "label": "CSS", 
+        "media_type": "text/css"
+    }, 
+    "CSV": {
+        "label": "CSV", 
+        "media_type": "text/csv"
+    }, 
+    "DBF": {
+        "label": "DBF", 
+        "media_type": "application/x-dbase"
+    }, 
+    "DCR": {
+        "label": "DCR File", 
+        "media_type": "application/x-director"
+    }, 
+    "DMP": {
+        "label": "Oracle Dump", 
+        "media_type": "application/x-oracledump"
+    }, 
+    "DOC": {
+        "label": "Word DOC", 
+        "media_type": "application/msword"
+    }, 
+    "DOCX": {
+        "label": "Word DOCX", 
+        "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    }, 
+    "DTD_SGML": {
+        "label": "SGML DTD", 
+        "media_type": "application/sgml"
+    }, 
+    "DTD_XML": {
+        "label": "XML DTD", 
+        "media_type": "application/xml-dtd"
+    }, 
+    "E00": {
+        "label": "E00", 
+        "media_type": "application/x-e00"
+    }, 
+    "ECW": {
+        "label": "ECW", 
+        "media_type": "application/x-ecw"
+    }, 
+    "EPS": {
+        "label": "Encapsulated Postscript", 
+        "media_type": "application/postscript"
+    }, 
+    "EPUB": {
+        "label": "EPUB", 
+        "media_type": "application/epub+zip"
+    }, 
+    "FMX2": {
+        "label": "Formex 2", 
+        "media_type": "text/sgml"
+    }, 
+    "FMX3": {
+        "label": "Formex 3", 
+        "media_type": "text/sgml"
+    }, 
+    "FMX4": {
+        "label": "Formex 4", 
+        "media_type": "application/xml"
+    }, 
+    "GDB": {
+        "label": "Esri File Geodatabase", 
+        "media_type": "application/x-filegdb"
+    }, 
+    "GEOJSON": {
+        "label": "GeoJSON", 
+        "media_type": "application/geo+json"
+    }, 
+    "GIF": {
+        "label": "GIF", 
+        "media_type": "image/gif"
+    }, 
+    "GML": {
+        "label": "GML", 
+        "media_type": "application/gml+xml"
+    }, 
+    "GMZ": {
+        "label": "Zipped GML", 
+        "media_type": "application/x-gmz"
+    }, 
+    "GRID": {
+        "label": "Esri binary grid", 
+        "media_type": "application/x-grid"
+    }, 
+    "GRID_ASCII": {
+        "label": "Esri ASCII grid", 
+        "media_type": "application/x-ascii-grid"
+    }, 
+    "GZIP": {
+        "label": "GNU zip", 
+        "media_type": "application/x-gzip"
+    }, 
+    "HDF": {
+        "label": "HDF", 
+        "media_type": "application/x-hdf"
+    }, 
+    "HTML": {
+        "label": "HTML", 
+        "media_type": "text/html"
+    }, 
+    "HTML_SIMPL": {
+        "label": "HTML simplified", 
+        "media_type": "text/html"
+    }, 
+    "INDD": {
+        "label": "INDD", 
+        "media_type": "application/x-indesign"
+    }, 
+    "JPEG": {
+        "label": "JPEG", 
+        "media_type": "image/jpeg"
+    }, 
+    "JPEG2000": {
+        "label": "JPEG 2000", 
+        "media_type": "image/jp2"
+    }, 
+    "JSON": {
+        "label": "JSON", 
+        "media_type": "application/json"
+    }, 
+    "JSON_LD": {
+        "label": "JSON-LD", 
+        "media_type": "application/ld+json"
+    }, 
+    "KML": {
+        "label": "KML", 
+        "media_type": "application/vnd.google-earth.kml+xml"
+    }, 
+    "KMZ": {
+        "label": "KMZ", 
+        "media_type": "application/vnd.google-earth.kmz"
+    }, 
+    "LAS": {
+        "label": "LASer file", 
+        "media_type": "application/x-las"
+    }, 
+    "LAZ": {
+        "label": "Compressed LAS file", 
+        "media_type": "application/x-laz"
+    }, 
+    "MAP_PRVW": {
+        "label": "ArcGIS Map Preview", 
+        "media_type": "arcgis_map_preview"
+    }, 
+    "MAP_SRVC": {
+        "label": "ArcGIS Map Service", 
+        "media_type": "arcgis_map_service"
+    }, 
+    "MBOX": {
+        "label": "MBOX", 
+        "media_type": "application/mbox"
+    }, 
+    "MDB": {
+        "label": "MDB", 
+        "media_type": "application/x-msaccess"
+    }, 
+    "METS": {
+        "label": "METS XML", 
+        "media_type": "application/xml"
+    }, 
+    "METS_ZIP": {
+        "label": "METS package", 
+        "media_type": "application/zip"
+    }, 
+    "MHTML": {
+        "label": "MHTML", 
+        "media_type": "message/html"
+    }, 
+    "MOBI": {
+        "label": "Mobipocket eBook", 
+        "media_type": "application/x-mobipocket-ebook"
+    }, 
+    "MOP": {
+        "label": "MOP", 
+        "media_type": "chemical/x-mopac-input"
+    }, 
+    "MPEG2": {
+        "label": "MPEG-2", 
+        "media_type": "video/mpeg"
+    }, 
+    "MPEG4": {
+        "label": "MPEG-4", 
+        "media_type": "video/mp4"
+    }, 
+    "MPEG4_AVC": {
+        "label": "MPEG-4 AVC", 
+        "media_type": "video/mp4"
+    }, 
+    "MSG_HTTP": {
+        "label": "HTTP Message", 
+        "media_type": "message/http"
+    }, 
+    "MXD": {
+        "label": "MXD", 
+        "media_type": "application/x-mxd"
+    }, 
+    "NETCDF": {
+        "label": "NetCDF", 
+        "media_type": "application/x-netcdf"
+    }, 
+    "OCTET": {
+        "label": "Octet Stream", 
+        "media_type": "application/octet-stream"
+    }, 
+    "ODB": {
+        "label": "OpenDocument Database", 
+        "media_type": "application/vnd.oasis.opendocument.database"
+    }, 
+    "ODC": {
+        "label": "OpenDocument Chart", 
+        "media_type": "application/vnd.oasis.opendocument.chart"
+    }, 
+    "ODF": {
+        "label": "ODF", 
+        "media_type": "application/octet-stream"
+    }, 
+    "ODG": {
+        "label": "OpenDocument Image", 
+        "media_type": "application/vnd.oasis.opendocument.graphics"
+    }, 
+    "ODS": {
+        "label": "ODS", 
+        "media_type": "application/vnd.oasis.opendocument.spreadsheet"
+    }, 
+    "ODT": {
+        "label": "ODT", 
+        "media_type": "application/vnd.oasis.opendocument.text"
+    }, 
+    "OVF": {
+        "label": "OVF", 
+        "media_type": "application/ovf"
+    }, 
+    "OWL": {
+        "label": "OWL", 
+        "media_type": "application/owl+xml"
+    }, 
+    "PDF": {
+        "label": "PDF", 
+        "media_type": "application/pdf"
+    }, 
+    "PDF1X": {
+        "label": "PDF1X", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFA1A": {
+        "label": "PDF/A-1a", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFA1B": {
+        "label": "PDF/A-1b", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFA2A": {
+        "label": "PDF/A-2a", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFA2B": {
+        "label": "PDF/A-2b", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFA3": {
+        "label": "PDFA-3", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFX": {
+        "label": "PDF/X", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFX1A": {
+        "label": "PDF/X-1a", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFX2A": {
+        "label": "PDF/X-2a", 
+        "media_type": "application/pdf"
+    }, 
+    "PDFX4": {
+        "label": "PDF/X-4", 
+        "media_type": "application/pdf"
+    }, 
+    "PNG": {
+        "label": "PNG", 
+        "media_type": "image/png"
+    }, 
+    "PPS": {
+        "label": "PowerPoint Slide Show", 
+        "media_type": "application/vnd.ms-powerpoint"
+    }, 
+    "PPSX": {
+        "label": "PowerPoint PPSX", 
+        "media_type": "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+    }, 
+    "PPT": {
+        "label": "PowerPoint PPT", 
+        "media_type": "application/vnd.ms-powerpoint"
+    }, 
+    "PPTX": {
+        "label": "PowerPoint PPTX", 
+        "media_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    }, 
+    "PS": {
+        "label": "PS", 
+        "media_type": "application/postscript"
+    }, 
+    "PSD": {
+        "label": "PSD", 
+        "media_type": "application/x-photoshop"
+    }, 
+    "RDF": {
+        "label": "RDF", 
+        "media_type": "application/rdf+xml"
+    }, 
+    "RDFA": {
+        "label": "RDFa", 
+        "media_type": "application/rdfa"
+    }, 
+    "RDF_N_QUADS": {
+        "label": "RDF N-Quads", 
+        "media_type": "application/n-quads"
+    }, 
+    "RDF_N_TRIPLES": {
+        "label": "RDF N-Triples", 
+        "media_type": "application/n-triples"
+    }, 
+    "RDF_TRIG": {
+        "label": "RDF TriG", 
+        "media_type": "application/trig"
+    }, 
+    "RDF_TURTLE": {
+        "label": "RDF Turtle", 
+        "media_type": "text/turtle"
+    }, 
+    "RDF_XML": {
+        "label": "RDF XML", 
+        "media_type": "application/rdf+xml"
+    }, 
+    "REST": {
+        "label": "Esri REST", 
+        "media_type": "arcgis_rest"
+    }, 
+    "RSS": {
+        "label": "RSS feed", 
+        "media_type": "application/rss+xml"
+    }, 
+    "RTF": {
+        "label": "RTF", 
+        "media_type": "text/rtf"
+    }, 
+    "SCHEMA_XML": {
+        "label": "XML schema", 
+        "media_type": "application/xml"
+    }, 
+    "SDMX": {
+        "label": "SDMX", 
+        "media_type": "application/xml"
+    }, 
+    "SGML": {
+        "label": "SGML", 
+        "media_type": "text/sgml"
+    }, 
+    "SHP": {
+        "label": "Esri Shape", 
+        "media_type": "application/x-shapefile"
+    }, 
+    "SKOS_XML": {
+        "label": "SKOS", 
+        "media_type": "application/rdf+xml"
+    }, 
+    "SPARQLQ": {
+        "label": "SPARQL", 
+        "media_type": "application/sparql-query"
+    }, 
+    "SPARQLQRES": {
+        "label": "SPARQL results", 
+        "media_type": "application/sparql-results+xml"
+    }, 
+    "SQL": {
+        "label": "SQL", 
+        "media_type": "application/sql"
+    }, 
+    "TAB": {
+        "label": "MapInfo TAB file", 
+        "media_type": "application/x-tab"
+    }, 
+    "TAB_RSTR": {
+        "label": "MapInfo TAB raster file", 
+        "media_type": "application/x-tab-raster"
+    }, 
+    "TAR": {
+        "label": "TAR", 
+        "media_type": "application/x-tar"
+    }, 
+    "TAR_GZ": {
+        "label": "TAR GZ", 
+        "media_type": "application/gnutar"
+    }, 
+    "TAR_XZ": {
+        "label": "TAR XZ", 
+        "media_type": "application/x-compressed"
+    }, 
+    "TIFF": {
+        "label": "TIFF", 
+        "media_type": "image/tiff"
+    }, 
+    "TIFF_FX": {
+        "label": "TIFF FX", 
+        "media_type": "image/tiff-fx"
+    }, 
+    "TMX": {
+        "label": "TMX", 
+        "media_type": "application/xml"
+    }, 
+    "TSV": {
+        "label": "TSV", 
+        "media_type": "text/tab-separated-values"
+    }, 
+    "TXT": {
+        "label": "Plain text", 
+        "media_type": "text/plain"
+    }, 
+    "WARC": {
+        "label": "WARC", 
+        "media_type": "application/warc"
+    }, 
+    "WARC_GZ": {
+        "label": "WARC GZ", 
+        "media_type": "application/gzip"
+    }, 
+    "WORLD": {
+        "label": "World file", 
+        "media_type": "application/x-worldfile"
+    }, 
+    "XHTML": {
+        "label": "XHTML", 
+        "media_type": "application/xhtml+xml"
+    }, 
+    "XHTML_SIMPL": {
+        "label": "XHTML simplified", 
+        "media_type": "application/xhtml+xml"
+    }, 
+    "XLIFF": {
+        "label": "XLIFF", 
+        "media_type": "application/xliff+xml"
+    }, 
+    "XLS": {
+        "label": "Excel XLS", 
+        "media_type": "application/vnd.ms-excel"
+    }, 
+    "XLSX": {
+        "label": "Excel XLSX", 
+        "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    }, 
+    "XML": {
+        "label": "XML", 
+        "media_type": "application/xml"
+    }, 
+    "XSLFO": {
+        "label": "XSL-FO", 
+        "media_type": "application/xml"
+    }, 
+    "XSLT": {
+        "label": "XSLT", 
+        "media_type": "application/xslt+xml"
+    }, 
+    "XYZ": {
+        "label": "XYZ Chemical File", 
+        "media_type": "chemical/x-xyz"
+    }, 
+    "ZIP": {
+        "label": "ZIP", 
+        "media_type": "application/zip"
+    }
+}
