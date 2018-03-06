@@ -183,12 +183,20 @@ class DCATdeBerlinProfile(RDFProfile):
         # Enhance Distributions
         for resource_dict in dataset_dict.get('resources', []):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
-                # Match distribution in graph and distribution in ckan-dict
+                # Match distribution in graph and resource in ckan-dict
                 if unicode(distribution) == resource_uri(resource_dict):
-                    if dcat_de_license:
-                        g.add( (distribution, DCT.license, DCATDE_LIC[dcat_de_license]) )
-                        # DCATDE_LIC.xyz is not dereferencable, so we add some additional
-                        # triples that link to the downloadable source:
-                        g.add( (DCATDE_LIC[dcat_de_license], RDFS.isDefinedBy, URIRef(DCATDE_LIC)) )
-                        g.add( (URIRef(DCATDE_LIC), VOID.dataDump, URIRef("http://www.dcat-ap.de/def/licenses/1_0.rdf")) )
+                    self.enhance_distribution_resource(g, distribution, resource_dict, dcat_de_license)
+
+    def enhance_distribution_resource(self, g, distribution_ref, resource_dict, license_code):
+
+        # Nr. 77 - License (derived from dataset license)
+        if license_code:
+            g.add( (distribution_ref, DCT.license, DCATDE_LIC[license_code]) )
+            # DCATDE_LIC.xyz is not dereferencable, so we add some additional
+            # triples that link to the downloadable source:
+            g.add( (DCATDE_LIC[license_code], RDFS.isDefinedBy, URIRef(DCATDE_LIC)) )
+            g.add( (URIRef(DCATDE_LIC), VOID.dataDump, URIRef("http://www.dcat-ap.de/def/licenses/1_0.rdf")) )
+
+        # Nr. 78 - Format
+        
 
