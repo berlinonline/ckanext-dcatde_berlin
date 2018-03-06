@@ -1,0 +1,21 @@
+# generate a CSV mapping from file format codes to URIs 
+# in the http://publications.europa.eu/mdr/authority/file-type/ NAL
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX notation-type: <http://publications.europa.eu/resource/authority/notation-type/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?nal_code ?label ?media_type
+WHERE {
+  ?file_type a euvoc:FileType ;
+    dc:identifier ?nal_code ;
+    skos:prefLabel ?label ;
+    euvoc:xlNotation [
+      euvoc:xlCodification ?media_type ;
+      dct:type notation-type:IANA_MT ;
+    ] .
+  FILTER( lang(?label) = "en" )
+}
+ORDER BY ?nal_code
