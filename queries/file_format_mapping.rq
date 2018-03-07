@@ -7,9 +7,9 @@ PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
 PREFIX notation-type: <http://publications.europa.eu/resource/authority/notation-type/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-SELECT DISTINCT ?nal_code ?label ?media_type
+SELECT DISTINCT ?nal_code ?uri ?label ?media_type
 WHERE {
-  ?file_type a euvoc:FileType ;
+  ?uri a euvoc:FileType ;
     dc:identifier ?nal_code ;
     skos:prefLabel ?label ;
     euvoc:xlNotation [
