@@ -1,0 +1,48 @@
+@prefix : <https://daten.berlin.de/schema/> .
+@prefix dist-format: <https://daten.berlin.de/schema/dist-format/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+
+: 
+  a owl:Ontology ;
+  rdfs:label "daten.berlin.de Vocab"@en ;
+  rdfs:label "daten.berlin.de Vocab"@en ;
+  rdfs:comment "Metadaten-Vokabular für das Berliner Datenportal daten.berlin.de. Ergänzend zu den in DCAT-AP und DCAT-AP.de aufgeführten Referenzvokabularen."@de ;
+  dct:created "2018-03-07"^^xsd:date ;
+  dct:modified "2018-03-07"^^xsd:date ;
+  dct:creator :knudmoeller ;
+.
+
+:knudmoeller 
+  a foaf:Person ;
+  foaf:name "Knud Möller"@de ;
+  foaf:mbox <mailto:knud.moeller@berlinonline.de> ;
+.
+
+:berlinonline 
+  a foaf:Organization ;
+  foaf:name "BerlinOnline Stadtportal GmbH & Co. KG"@de ;
+  foaf:homepage <https://www.berlinonline.de> ;
+  foaf:member :knudmoeller ;
+.
+
+dist-format:wms
+  a dct:MediaTypeOrExtent ;
+  rdfs:label "Web Map Service"@de ;
+  rdfs:comment "WMS is a standard protocol for serving geo-referenced map images. There is a mimetype string, but it's not registered with IANA: application/vnd.ogc.wms_xml."@en ;
+  dct:identifier "WMS" ;
+.
+
+dist-format:wfs
+  a dct:MediaTypeOrExtent ;
+  rdfs:label "Web Feature Service"@de ;
+  rdfs:comment "The Web Feature Service standard provides an interface allowing requests for geographical features across the web."@en ;
+  dct:identifier "WFS" ;
+.
+
