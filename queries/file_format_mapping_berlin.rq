@@ -1,0 +1,18 @@
+# generate a CSV mapping from file format codes to URIs 
+# in the daten.berlin.de vocab
+
+PREFIX berlin: <https://daten.berlin.de/schema/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?code ?uri ?label ?media_type
+WHERE {
+  ?uri a dct:MediaTypeOrExtent ;
+    dct:identifier ?code ;
+    rdfs:label ?label ;
+  OPTIONAL {
+    ?uri berlin:mediatype ?media_type
+  }
+  FILTER( lang(?label) = "en" )
+}
+ORDER BY ?code
