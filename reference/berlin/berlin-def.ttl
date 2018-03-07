@@ -9,7 +9,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 
-: 
+:vocab
   a owl:Ontology ;
   rdfs:label "daten.berlin.de Vocab"@en ;
   rdfs:label "daten.berlin.de Vocab"@en ;
@@ -32,11 +32,20 @@
   foaf:member :knudmoeller ;
 .
 
+:mediatype
+  a owl:DatatypeProperty ;
+  rdfs:label "media type"@en ;
+  rdfs:comment "Link anything to a mediatype such as those registered to IANA (but not restricted to those)."@en ;
+  rdfs:isDefinedBy :vocab ;
+.
+
 dist-format:wms
   a dct:MediaTypeOrExtent ;
   rdfs:label "Web Map Service"@de ;
   rdfs:comment "WMS is a standard protocol for serving geo-referenced map images. There is a mimetype string, but it's not registered with IANA: application/vnd.ogc.wms_xml."@en ;
   dct:identifier "WMS" ;
+  :mediatype "application/vnd.ogc.wms_xml" ;
+  rdfs:isDefinedBy :vocab ;
 .
 
 dist-format:wfs
@@ -44,5 +53,6 @@ dist-format:wfs
   rdfs:label "Web Feature Service"@de ;
   rdfs:comment "The Web Feature Service standard provides an interface allowing requests for geographical features across the web."@en ;
   dct:identifier "WFS" ;
+  rdfs:isDefinedBy :vocab ;
 .
 
