@@ -5,7 +5,7 @@ import json
 import sys
 
 if len(sys.argv) != 4:
-  print "usage: python csv2json.py CSV_FILE_PATH INDEX_COLUMN_NAME JSON_FILE_PATH"
+  print("usage: python csv2json.py CSV_FILE_PATH INDEX_COLUMN_NAME JSON_FILE_PATH")
   sys.exit()
 
 csv_file_path = sys.argv[1]
@@ -27,7 +27,8 @@ for row in reader:
   entry = {}
   for index, value in enumerate(row):
     if index != index_column:
-      entry[headers[index]] = value
+      if value:
+        entry[headers[index]] = value
   data[row[index_column]] = entry
 
 with open(json_file_path, 'w') as outfile:
