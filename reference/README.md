@@ -2,7 +2,8 @@
 
 This folder contains RDF representations of codelists which are used by DCAT-AP and DCAT-AP.de.
 
-They're included here because sadly, despite the fact that they're made available as RDF, the URIs used for the codes are not dereferenceable. This means you cannot "follow your nose" when you encounter them in our data. You have to manually look for them with a search engine to find the definitions. Also, the original versions are in RDF/XML, while they are included here as Turtle, which is much more readable.
+The original versions are published in RDF/XML. They are included here as Turtle, which is much more readable.
+
 
 ## DCAT-AP.de Vokabulare
 
@@ -16,6 +17,8 @@ The common prefix is: `http://dcat-ap.de/def/`.
 ## Metadata Registry - Named Authority Lists
 
 [Named Authority Lists](http://publications.europa.eu/mdr/authority/index.html) from the EU's Metadata Registry.
+
+They're included here because sadly, despite the fact that they're made available as RDF, the URIs used for the codes are not dereferenceable. This means you cannot "follow your nose" when you encounter them in our data. You have to manually look for them with a search engine to find the definitions, which defeats the purpose of using URIs as a tool for look-up.
 
 The common prefix is: `http://publications.europa.eu/resource/authority/`
 
