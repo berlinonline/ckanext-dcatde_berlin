@@ -41,7 +41,7 @@
 
 dist-format:wms
   a dct:MediaTypeOrExtent ;
-  rdfs:label "Web Map Service"@de ;
+  rdfs:label "Web Map Service"@en ;
   rdfs:comment "WMS is a standard protocol for serving geo-referenced map images. There is a mimetype string, but it's not registered with IANA: application/vnd.ogc.wms_xml."@en ;
   dct:identifier "WMS" ;
   :mediatype "application/vnd.ogc.wms_xml" ;
@@ -50,7 +50,7 @@ dist-format:wms
 
 dist-format:wfs
   a dct:MediaTypeOrExtent ;
-  rdfs:label "Web Feature Service"@de ;
+  rdfs:label "Web Feature Service"@en ;
   rdfs:comment "The Web Feature Service standard provides an interface allowing requests for geographical features across the web."@en ;
   dct:identifier "WFS" ;
   rdfs:isDefinedBy :vocab ;
