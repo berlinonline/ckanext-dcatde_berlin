@@ -1,3 +1,10 @@
+# This Makefile automates some aspects of building ckanext-dcatde_berlin,
+# such as generating mapping files from external sources
+
+# requirements:
+# - csvkit (http://csvkit.readthedocs.io/en/1.0.2/)
+# - Jena command line tools: http://jena.apache.org
+
 FILE-TYPE-NAL=reference/mdr-nal/filetypes-skos-ap-act.ttl
 BERLIN-VOCAB=reference/berlin/berlin-def.ttl
 
