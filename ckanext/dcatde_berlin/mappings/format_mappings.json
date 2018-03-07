@@ -574,6 +574,15 @@
         "media_type": "application/gzip", 
         "uri": "http://publications.europa.eu/resource/authority/file-type/WARC_GZ"
     }, 
+    "WFS": {
+        "label": "Web Feature Service", 
+        "uri": "https://daten.berlin.de/schema/dist-format/wfs"
+    }, 
+    "WMS": {
+        "label": "Web Map Service", 
+        "media_type": "application/vnd.ogc.wms_xml", 
+        "uri": "https://daten.berlin.de/schema/dist-format/wms"
+    }, 
     "WORLD": {
         "label": "World file", 
         "media_type": "application/x-worldfile", 
