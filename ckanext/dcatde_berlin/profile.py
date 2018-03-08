@@ -79,6 +79,9 @@ class DCATdeBerlinProfile(RDFProfile):
         with open(os.path.join(dir_path, "mappings", "org2legalBasis.json")) as json_data:
             self.legalBasis = json.load(json_data)
 
+        with open(os.path.join(dir_path, "mappings", "format_mapping.json")) as json_data:
+            self.format_mapping = json.load(json_data)
+
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
     def parse_dataset(self, dataset_dict, dataset_ref):
@@ -90,6 +93,8 @@ class DCATdeBerlinProfile(RDFProfile):
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
         g = self.g
+
+        dist_additons = {}
 
         # bind namespaces to have readable names in RDF Document
         for prefix, namespace in namespaces.iteritems():
@@ -128,7 +133,7 @@ class DCATdeBerlinProfile(RDFProfile):
                     # MDRTHEME.xyz is not dereferencable, so we add some additional
                     # triples that link to the downloadable source:
                     g.add( (MDRTHEME[dcat_group], RDFS.isDefinedBy, URIRef(MDRTHEME)) )
-                    g.add( (URIRef(MDRTHEME), VOID.dataDump, URIRef("http://publications.europa.eu/mdr/resource/authority/data-theme/skos-ap-eu/data-theme-skos-ap-act.rdf")) )
+                    g.add( (URIRef(MDRTHEME), RDFS.seeAlso, URIRef("http://publications.europa.eu/mdr/resource/authority/data-theme/skos-ap-eu/data-theme-skos-ap-act.rdf")) )
 
 
 
@@ -142,7 +147,7 @@ class DCATdeBerlinProfile(RDFProfile):
         # MDRLANG.DEU is not dereferencable, so we add some additional
         # triples that link to the downloadable source:
         g.add( (MDRLANG.DEU, RDFS.isDefinedBy, URIRef(MDRLANG)) )
-        g.add( (URIRef(MDRLANG), VOID.dataDump, URIRef("http://publications.europa.eu/mdr/resource/authority/language/skos-ap-eu/languages-skos-ap-act.rdf")) )
+        g.add( (URIRef(MDRLANG), RDFS.seeAlso, URIRef("http://publications.europa.eu/mdr/resource/authority/language/skos-ap-eu/languages-skos-ap-act.rdf")) )
 
         # Nr. 61 - Provenienz
 
@@ -173,30 +178,41 @@ class DCATdeBerlinProfile(RDFProfile):
             legalbasisText = self.legalBasis['mapping'][org['name']]
         g.add( (dataset_ref, DCATDE.legalbasisText, Literal(legalbasisText)) )
 
-        # License
-        dcat_de_license = None
+        # Enhance Distributions
+        ## License
         if 'license_id' in dataset_dict:
             ogd_license_code = dataset_dict['license_id']
             if ogd_license_code in self.license_mapping:
-                dcat_de_license = self.license_mapping[ogd_license_code]['URI']
+                dist_additons['license_id'] = self.license_mapping[ogd_license_code]['dcatde-id']
 
-        # Enhance Distributions
+        ## Attribution Text
+        if 'attribution_text' in dataset_dict:
+            dist_additons['attribution_text'] = dataset_dict.get('attribution_text')
+            log.debug("attribution_text: {}".format(dist_additons['attribution_text']))
+
         for resource_dict in dataset_dict.get('resources', []):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
                 # Match distribution in graph and resource in ckan-dict
                 if unicode(distribution) == resource_uri(resource_dict):
-                    self.enhance_distribution_resource(g, distribution, resource_dict, dcat_de_license)
+                    self.enhance_distribution_resource(g, distribution, resource_dict, dist_additons)
 
-    def enhance_distribution_resource(self, g, distribution_ref, resource_dict, license_code):
+    def enhance_distribution_resource(self, g, distribution_ref, resource_dict, dist_additons):
 
         # Nr. 77 - License (derived from dataset license)
-        if license_code:
-            g.add( (distribution_ref, DCT.license, DCATDE_LIC[license_code]) )
-            # DCATDE_LIC.xyz is not dereferencable, so we add some additional
-            # triples that link to the downloadable source:
-            g.add( (DCATDE_LIC[license_code], RDFS.isDefinedBy, URIRef(DCATDE_LIC)) )
-            g.add( (URIRef(DCATDE_LIC), VOID.dataDump, URIRef("http://www.dcat-ap.de/def/licenses/1_0.rdf")) )
+        if 'license_id' in dist_additons:
+            g.add( (distribution_ref, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
 
         # Nr. 78 - Format
-        
+        for format_string in g.objects(distribution_ref, DCT['format']):
+            g.remove( (distribution_ref, DCT['format'], Literal(format_string)) )
+            format_string = format_string.toPython()
+            if format_string in self.format_mapping:
+                format_uri = self.format_mapping[format_string]['uri']
+                g.add( (distribution_ref, DCT['format'], URIRef(format_uri)) )
+            else:
+                log.warning("No mapping found for format string '{}'".format(format_string))
+
+        # Nr. 93 - dcatde:licenseAttributionByText
+        if 'attribution_text' in dist_additons:
+            g.add( (distribution_ref, DCATDE.licenseAttributionByText, Literal(dist_additons['attribution_text'])) )       
 
