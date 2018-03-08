@@ -1,6 +1,6 @@
 {
   "official-work": {
-    "URI": "official-work",
+    "dcatde-id": "official-work",
     "Name": "Amtliches Werk, lizenzfrei nach §5 Abs. 1 UrhG",
     "Lizenzcode": "officialWork",
     "Lizenztext": "http://www.gesetze-im-internet.de/urhg/__5.html",
@@ -8,7 +8,7 @@
     "Lizenztyp": "offen"
   },
   "app_freeware": {
-    "URI": "other-freeware",
+    "dcatde-id": "other-freeware",
     "Name": "Andere Freeware Lizenz",
     "Lizenzcode": "otherfreeware",
     "Lizenztext": "",
@@ -16,7 +16,7 @@
     "Lizenztyp": "geschlossen"
   },
   "other-closed": {
-    "URI": "other-closed",
+    "dcatde-id": "other-closed",
     "Name": "Andere geschlossene Lizenz",
     "Lizenzcode": "otherclosed",
     "Lizenztext": "",
@@ -24,7 +24,7 @@
     "Lizenztyp": "geschlossen"
   },
   "app_commercial": {
-    "URI": "other-commercial",
+    "dcatde-id": "other-commercial",
     "Name": "Andere kommerzielle Lizenz",
     "Lizenzcode": "othercommercial",
     "Lizenztext": "",
@@ -32,7 +32,7 @@
     "Lizenztyp": "geschlossen"
   },
   "other-open": {
-    "URI": "other-open",
+    "dcatde-id": "other-open",
     "Name": "Andere offene Lizenz",
     "Lizenzcode": "otheropen",
     "Lizenztext": "",
@@ -40,7 +40,7 @@
     "Lizenztyp": "offen"
   },
   "app_opensource": {
-    "URI": "other-opensource",
+    "dcatde-id": "other-opensource",
     "Name": "Andere Open Source Lizenz",
     "Lizenzcode": "otheropensource",
     "Lizenztext": "",
@@ -48,7 +48,7 @@
     "Lizenztyp": "offen"
   },
   "bsd-license": {
-    "URI": "bsd",
+    "dcatde-id": "bsd",
     "Name": "BSD Lizenz",
     "Lizenzcode": "bsdlicense",
     "Lizenztext": "http://www.opensource.org/licenses/bsd-license.php",
@@ -56,7 +56,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-sa": {
-    "URI": "cc-by-sa",
+    "dcatde-id": "cc-by-sa",
     "Name": "Creative Commons Attribution ShareAlike (ccbysa)",
     "Lizenzcode": "ccbysa",
     "Lizenztext": "http://www.opendefinition.org/licenses/cc-by-sa",
@@ -64,7 +64,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-sa-4.0": {
-    "URI": "cc-by-sa/4_0",
+    "dcatde-id": "cc-by-sa/4_0",
     "Name": "Creative Commons Attribution ShareAlike 4.0 (CCBYSA4.0)",
     "Lizenzcode": "ccbysa/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-sa/4.0/",
@@ -72,7 +72,7 @@
     "Lizenztyp": "offen"
   },
   "cc-zero": {
-    "URI": "cc-zero",
+    "dcatde-id": "cc-zero",
     "Name": "Creative Commons CCZero (CC0)",
     "Lizenzcode": "cczero",
     "Lizenztext": "http://www.opendefinition.org/licenses/cc-zero",
@@ -80,7 +80,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-4.0": {
-    "URI": "cc-by/4_0",
+    "dcatde-id": "cc-by/4_0",
     "Name": "Creative Commons Namensnennung  4.0 (CCBY)",
     "Lizenzcode": "ccby/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by/4.0/",
@@ -88,7 +88,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by": {
-    "URI": "cc-by",
+    "dcatde-id": "cc-by",
     "Name": "Creative Commons Namensnennung (CCBY)",
     "Lizenzcode": "ccby",
     "Lizenztext": "http://www.opendefinition.org/licenses/cc-by",
@@ -96,7 +96,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-3.0": {
-    "URI": "cc-by-de/3_0",
+    "dcatde-id": "cc-by-de/3_0",
     "Name": "Creative Commons Namensnennung 3.0 (CC-BY)",
     "Lizenzcode": "ccbyde/3_0",
     "Lizenztext": "https://creativecommons.org/licenses/by/3.0/de/",
@@ -104,7 +104,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-nd": {
-    "URI": "cc-by-nd",
+    "dcatde-id": "cc-by-nd",
     "Name": "Creative Commons Namensnennung Keine Bearbeitung (CC-BY-ND)",
     "Lizenzcode": "ccbynd",
     "Lizenztext": "http://creativecommons.org/licenses/by-nd/3.0/",
@@ -112,7 +112,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nd-3.0": {
-    "URI": "cc-by-nd/3_0",
+    "dcatde-id": "cc-by-nd/3_0",
     "Name": "Creative Commons Namensnennung Keine Bearbeitung 3.0 (CC-BY-ND)",
     "Lizenzcode": "ccbynd/3_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nd/3.0/",
@@ -120,7 +120,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nd-4.0": {
-    "URI": "cc-by-nd/4_0",
+    "dcatde-id": "cc-by-nd/4_0",
     "Name": "Creative Commons Namensnennung Keine Bearbeitung 4.0 International (CC BYND 4.0)",
     "Lizenzcode": "ccbynd/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nd/4.0/",
@@ -128,7 +128,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nc-4.0": {
-    "URI": "cc-by-nc-de/4_0",
+    "dcatde-id": "cc-by-nc-de/4_0",
     "Name": "Creative Commons Namensnennung Nichtkommerziell 4.0 (CCBY)",
     "Lizenzcode": "ccbync/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nc/4.0/",
@@ -136,7 +136,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-nc": {
-    "URI": "cc-nc",
+    "dcatde-id": "cc-nc",
     "Name": "Creative Commons Namensnennung-Nicht kommerziell",
     "Lizenzcode": "cc-nc",
     "Lizenztext": "http://creativecommons.org/licenses/by-nc/2.0/",
@@ -144,7 +144,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-nc-3.0": {
-    "URI": "cc-nc/3_0",
+    "dcatde-id": "cc-nc/3_0",
     "Name": "Creative Commons Namensnennung-Nicht kommerziell 3.0 ",
     "Lizenzcode": "cc-nc/3_0",
     "Lizenztext": "https://creativecommons.org/licenses/by-nc/3.0/de/",
@@ -152,7 +152,7 @@
     "Lizenztyp": "geschlossen"
   },
   "dl-de-zero-2.0": {
-    "URI": "dl-zero-de/2_0",
+    "dcatde-id": "dl-zero-de/2_0",
     "Name": "Datenlizenz Deutschland – Zero – Version 2.0",
     "Lizenzcode": "dlzerode/2_0",
     "Lizenztext": "https://www.govdata.de/dl-de/zero-2-0",
@@ -160,7 +160,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-1.0": {
-    "URI": "dl-by-de/1_0",
+    "dcatde-id": "dl-by-de/1_0",
     "Name": "Datenlizenz Deutschland Namensnennung 1.0",
     "Lizenzcode": "dlbyde/1_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-1-0",
@@ -168,7 +168,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-2.0": {
-    "URI": "dl-by-de/2_0",
+    "dcatde-id": "dl-by-de/2_0",
     "Name": "Datenlizenz Deutschland Namensnennung 2.0",
     "Lizenzcode": "dlbyde/2_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-2-0",
@@ -176,7 +176,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-nc-1.0": {
-    "URI": "dl-by-nc-de/1_0",
+    "dcatde-id": "dl-by-nc-de/1_0",
     "Name": "Datenlizenz Deutschland Namensnennung nicht-kommerziell 1.0",
     "Lizenzcode": "dlbyncde/1_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-nc-1-0",
@@ -184,7 +184,7 @@
     "Lizenztyp": "geschlossen"
   },
   "apache": {
-    "URI": "apache",
+    "dcatde-id": "apache",
     "Name": "FreieSoftwareLizenz der Apache Software Foundation, keine CopyleftLizenz",
     "Lizenzcode": "apache",
     "Lizenztext": "http://www.apache.org/licenses",
@@ -192,7 +192,7 @@
     "Lizenztyp": "offen"
   },
   "gfdl": {
-    "URI": "gfdl",
+    "dcatde-id": "gfdl",
     "Name": "GNU Free Documentation License",
     "Lizenzcode": "gfdl",
     "Lizenztext": "http://www.opendefinition.org/licenses/gfdl",
@@ -200,7 +200,7 @@
     "Lizenztyp": "offen"
   },
   "gpl-3.0": {
-    "URI": "gpl/30",
+    "dcatde-id": "gpl/30",
     "Name": "GNU General Public License version 3.0 (GPLv3)",
     "Lizenzcode": "gpl/3_0",
     "Lizenztext": "http://www.opensource.org/licenses/gpl-3.0.html",
@@ -208,7 +208,7 @@
     "Lizenztyp": "offen"
   },
   "mozilla": {
-    "URI": "mozilla",
+    "dcatde-id": "mozilla",
     "Name": "Mozilla Public License 1.0 (MPL)",
     "Lizenzcode": "mozilla",
     "Lizenztext": "http://www.mozilla.org/MPL",
@@ -216,7 +216,7 @@
     "Lizenztyp": "offen"
   },
   "geonutzv-de-2013-03-19": {
-    "URI": "geonutz/20130319",
+    "dcatde-id": "geonutz/20130319",
     "Name": "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Bundes",
     "Lizenzcode": "geoNutz/20130319",
     "Lizenztext": "http://www.geodatenzentrum.de/docpdf/geonutzv.pdf",
@@ -224,7 +224,7 @@
     "Lizenztyp": "offen"
   },
   "geonutz-be-2013-10-01": {
-    "URI": "geoNutz/20131001",
+    "dcatde-id": "geoNutz/20131001",
     "Name": "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Landes Berlin",
     "Lizenzcode": "geoNutz/20131001",
     "Lizenztext": "http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf",
@@ -232,7 +232,7 @@
     "Lizenztyp": "offen"
   },
   "odc-by": {
-    "URI": "od-bc",
+    "dcatde-id": "od-bc",
     "Name": "Open Data Commons Attribution License (ODCBY)",
     "Lizenzcode": "odby",
     "Lizenztext": "http://www.opendefinition.org/licenses/odc-by",
@@ -240,7 +240,7 @@
     "Lizenztyp": "offen"
   },
   "odc-odbl": {
-    "URI": "od-bl",
+    "dcatde-id": "od-bl",
     "Name": "Open Data Commons Open Database License (ODbL)",
     "Lizenzcode": "odbl",
     "Lizenztext": "http://www.opendefinition.org/licenses/odc-odbl",
@@ -248,7 +248,7 @@
     "Lizenztyp": "offen"
   },
   "odc-pddl": {
-    "URI": "odc-pddl",
+    "dcatde-id": "odc-pddl",
     "Name": "Open Data Commons Public Domain Dedication and Licence (PDDL)",
     "Lizenzcode": "odcpddl",
     "Lizenztext": "http://www.opendefinition.org/licenses/odc-pddl",
@@ -256,7 +256,7 @@
     "Lizenztyp": "offen"
   },
   "cc-pdm-1.0": {
-    "URI": "cc-pdm/1_0",
+    "dcatde-id": "cc-pdm/1_0",
     "Name": "Public Domain Mark 1.0 (PDM)",
     "Lizenzcode": "ccpdm/10",
     "Lizenztext": "http://creativecommons.org/publicdomain/mark/1.0/",
