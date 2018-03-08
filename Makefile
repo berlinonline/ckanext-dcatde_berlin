@@ -15,7 +15,7 @@ FORMAT-MAPPING-CSV=temp/filetypes.csv
 FORMAT-MAPPING-CSV-NAL=temp/filetypes_nal.csv
 FORMAT-MAPPING-CSV-BERLIN=temp/filetypes_berlin.csv
 
-FORMAT-MAPPING-JSON=ckanext/dcatde_berlin/mappings/format_mappings.json
+FORMAT-MAPPING-JSON=ckanext/dcatde_berlin/mappings/format_mapping.json
 
 FORMAT-MAPPING-INDEX-COL=code
 
