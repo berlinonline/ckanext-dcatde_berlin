@@ -101,6 +101,13 @@ class DCATdeBerlinProfile(RDFProfile):
         for prefix, namespace in namespaces.iteritems():
             g.bind(prefix, namespace)
 
+        # TEMPORARY: fix whitespace in 'url':
+        url = dataset_dict['url']
+        if url:
+            g.remove( (dataset_ref, DCAT.landingPage, URIRef(url)) )
+            url = url.replace(" ", "+")
+            g.add( (dataset_ref, DCAT.landingPage, URIRef(url)) )
+
         # Nr. 40 - Contributor
         contributorId = pylons.config.get('ckanext.dcatde.contributorid')
         if contributorId:
@@ -120,8 +127,8 @@ class DCATdeBerlinProfile(RDFProfile):
         publisher_url = self._get_dataset_value(dataset_dict, 'url')
         g.add( (publisher_ref, RDF.type, FOAF.Organization) )
         g.add( (publisher_ref, FOAF.name, Literal(publisher_name)) )
-        if publisher_url:
-            g.add( (publisher_ref, FOAF.homepage, URIRef(publisher_url)) )
+        # if publisher_url:
+        #     g.add( (publisher_ref, FOAF.homepage, URIRef(publisher_url)) )
         g.add( (dataset_ref, DCT.publisher, publisher_ref) )
 
         # Nr. 45 - Kategorie
@@ -198,6 +205,13 @@ class DCATdeBerlinProfile(RDFProfile):
                     self.enhance_distribution_resource(g, distribution, resource_dict, dist_additons)
 
     def enhance_distribution_resource(self, g, distribution_ref, resource_dict, dist_additons):
+
+        # TEMPORARY: fix whitespace in 'url':
+        url = resource_dict['url']
+        if url:
+            g.remove( (distribution_ref, DCAT.accessURL, URIRef(url)) )
+            url = url.replace(" ", "+")
+            g.add( (distribution_ref, DCAT.accessURL, URIRef(url)) )
 
         # Nr. 77 - License (derived from dataset license)
         if 'license_id' in dist_additons:
