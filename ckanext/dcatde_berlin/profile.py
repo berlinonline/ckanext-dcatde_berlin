@@ -92,6 +92,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
+        log.debug("dataset: {}".format(dataset_dict['name']))
         g = self.g
 
         dist_additons = {}
@@ -187,7 +188,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         ## Attribution Text
         if 'attribution_text' in dataset_dict:
-            dist_additons['attribution_text'] = dataset_dict.get('attribution_text')
+            dist_additons['attribution_text'] = dataset_dict.get('attribution_text').encode('utf-8')
             log.debug("attribution_text: {}".format(dist_additons['attribution_text']))
 
         for resource_dict in dataset_dict.get('resources', []):
