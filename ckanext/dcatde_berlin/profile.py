@@ -34,6 +34,7 @@ MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/'
 MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-theme/')
 DCATDE = Namespace("http://dcat-ap.de/def/dcatde/1_0/")
 DCATDE_LIC = Namespace("http://dcat-ap.de/def/licenses/")
+DCATDE_CONTRIBUTORS = Namespace("http://dcat-ap.de/def/contributors/")
 
 namespaces = {
     # copied from ckanext.dcat.profiles
@@ -111,7 +112,7 @@ class DCATdeBerlinProfile(RDFProfile):
         # Nr. 40 - Contributor
         contributorId = pylons.config.get('ckanext.dcatde.contributorid')
         if contributorId:
-            g.add( (dataset_ref, DCATDE.contributorID, Literal(contributorId) ))
+            g.add((dataset_ref, DCATDE.contributorID, URIRef("{}{}".format(DCATDE_CONTRIBUTORS, contributorId))))
 
         # Nr. 41 - Contact Point
         # If a maintainer name is given, set this to be the name of the 
