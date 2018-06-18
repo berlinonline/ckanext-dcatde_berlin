@@ -32,7 +32,7 @@ VOID = Namespace('http://rdfs.org/ns/void#')
 # own namespaces
 MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/')
 MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-theme/')
-DCATDE = Namespace("http://dcat-ap.de/def/dcatde/1_0/")
+DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
 DCATDE_LIC = Namespace("http://dcat-ap.de/def/licenses/")
 DCATDE_CONTRIBUTORS = Namespace("http://dcat-ap.de/def/contributors/")
 
@@ -147,7 +147,10 @@ class DCATdeBerlinProfile(RDFProfile):
 
 
         # Nr. 48 - conformsTo (Application Profile der Metadaten)
-        g.add( (dataset_ref, DCT.conformsTo, URIRef(DCATDE)) )
+        dcatapde_version = pylons.config.get('ckanext.dcatde.version')
+        log.info("DCATDE: {}".format(DCATDE))
+        log.info("version: {}".format(dcatapde_version))
+        g.add((dataset_ref, DCT.conformsTo, URIRef("{}{}/".format(DCATDE, dcatapde_version))))
 
         # Nr. 49 - 52 (Urheber, Verwalter, Bearbeiter, Autor) - we don't know this
 

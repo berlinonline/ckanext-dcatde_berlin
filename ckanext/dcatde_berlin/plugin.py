@@ -16,3 +16,4 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
         config['ckanext.dcat.enable_content_negotiation'] = True
         config['ckanext.dcat.rdf.profiles'] = "euro_dcat_ap dcatap_de"
         config['ckanext.dcatde.contributorid'] = "berlinOpenData"
+        config['ckanext.dcatde.version'] = "1.0.1"

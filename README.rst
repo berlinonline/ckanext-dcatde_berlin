@@ -71,6 +71,7 @@ In the ``[app:main]`` section of your CKAN config file, add the following lines:
     ckanext.dcat.enable_content_negotiation = True
     ckanext.dcat.rdf.profiles = euro_dcat_ap dcatap_de
     ckanext.dcatde.contributorid = berlinOpenData
+    ckanext.dcatde.version = 1.0.1
 
 
 ------------------------
