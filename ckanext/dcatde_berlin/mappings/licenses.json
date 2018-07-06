@@ -64,7 +64,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-sa-4.0": {
-    "dcatde-id": "cc-by-sa/4_0",
+    "dcatde-id": "cc-by-sa/4.0",
     "Name": "Creative Commons Attribution ShareAlike 4.0 (CCBYSA4.0)",
     "Lizenzcode": "ccbysa/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-sa/4.0/",
@@ -80,7 +80,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-4.0": {
-    "dcatde-id": "cc-by/4_0",
+    "dcatde-id": "cc-by/4.0",
     "Name": "Creative Commons Namensnennung  4.0 (CCBY)",
     "Lizenzcode": "ccby/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by/4.0/",
@@ -96,7 +96,7 @@
     "Lizenztyp": "offen"
   },
   "cc-by-3.0": {
-    "dcatde-id": "cc-by-de/3_0",
+    "dcatde-id": "cc-by-de/3.0",
     "Name": "Creative Commons Namensnennung 3.0 (CC-BY)",
     "Lizenzcode": "ccbyde/3_0",
     "Lizenztext": "https://creativecommons.org/licenses/by/3.0/de/",
@@ -112,7 +112,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nd-3.0": {
-    "dcatde-id": "cc-by-nd/3_0",
+    "dcatde-id": "cc-by-nd/3.0",
     "Name": "Creative Commons Namensnennung Keine Bearbeitung 3.0 (CC-BY-ND)",
     "Lizenzcode": "ccbynd/3_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nd/3.0/",
@@ -120,7 +120,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nd-4.0": {
-    "dcatde-id": "cc-by-nd/4_0",
+    "dcatde-id": "cc-by-nd/4.0",
     "Name": "Creative Commons Namensnennung Keine Bearbeitung 4.0 International (CC BYND 4.0)",
     "Lizenzcode": "ccbynd/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nd/4.0/",
@@ -128,7 +128,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-by-nc-4.0": {
-    "dcatde-id": "cc-by-nc-de/4_0",
+    "dcatde-id": "cc-by-nc-de/4.0",
     "Name": "Creative Commons Namensnennung Nichtkommerziell 4.0 (CCBY)",
     "Lizenzcode": "ccbync/4_0",
     "Lizenztext": "http://creativecommons.org/licenses/by-nc/4.0/",
@@ -144,7 +144,7 @@
     "Lizenztyp": "geschlossen"
   },
   "cc-nc-3.0": {
-    "dcatde-id": "cc-nc/3_0",
+    "dcatde-id": "cc-nc/3.0",
     "Name": "Creative Commons Namensnennung-Nicht kommerziell 3.0 ",
     "Lizenzcode": "cc-nc/3_0",
     "Lizenztext": "https://creativecommons.org/licenses/by-nc/3.0/de/",
@@ -152,7 +152,7 @@
     "Lizenztyp": "geschlossen"
   },
   "dl-de-zero-2.0": {
-    "dcatde-id": "dl-zero-de/2_0",
+    "dcatde-id": "dl-zero-de/2.0",
     "Name": "Datenlizenz Deutschland – Zero – Version 2.0",
     "Lizenzcode": "dlzerode/2_0",
     "Lizenztext": "https://www.govdata.de/dl-de/zero-2-0",
@@ -160,7 +160,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-1.0": {
-    "dcatde-id": "dl-by-de/1_0",
+    "dcatde-id": "dl-by-de/1.0",
     "Name": "Datenlizenz Deutschland Namensnennung 1.0",
     "Lizenzcode": "dlbyde/1_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-1-0",
@@ -168,7 +168,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-2.0": {
-    "dcatde-id": "dl-by-de/2_0",
+    "dcatde-id": "dl-by-de/2.0",
     "Name": "Datenlizenz Deutschland Namensnennung 2.0",
     "Lizenzcode": "dlbyde/2_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-2-0",
@@ -176,7 +176,7 @@
     "Lizenztyp": "offen"
   },
   "dl-de-by-nc-1.0": {
-    "dcatde-id": "dl-by-nc-de/1_0",
+    "dcatde-id": "dl-by-nc-de/1.0",
     "Name": "Datenlizenz Deutschland Namensnennung nicht-kommerziell 1.0",
     "Lizenzcode": "dlbyncde/1_0",
     "Lizenztext": "https://www.govdata.de/dl-de/by-nc-1-0",
@@ -256,7 +256,7 @@
     "Lizenztyp": "offen"
   },
   "cc-pdm-1.0": {
-    "dcatde-id": "cc-pdm/1_0",
+    "dcatde-id": "cc-pdm/1.0",
     "Name": "Public Domain Mark 1.0 (PDM)",
     "Lizenzcode": "ccpdm/10",
     "Lizenztext": "http://creativecommons.org/publicdomain/mark/1.0/",
