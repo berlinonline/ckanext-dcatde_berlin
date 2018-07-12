@@ -135,12 +135,12 @@
     "OGDLizenzcode": "cc-by-nc-4.0",
     "Lizenztyp": "geschlossen"
   },
-  "cc-nc": {
-    "dcatde-id": "cc-nc",
+  "cc-by-nc": {
+    "dcatde-id": "cc-by-nc",
     "Name": "Creative Commons Namensnennung-Nicht kommerziell",
-    "Lizenzcode": "cc-nc",
+    "Lizenzcode": "cc-by-nc",
     "Lizenztext": "http://creativecommons.org/licenses/by-nc/2.0/",
-    "OGDLizenzcode": "cc-nc",
+    "OGDLizenzcode": "cc-by-nc",
     "Lizenztyp": "geschlossen"
   },
   "cc-nc-3.0": {
@@ -232,7 +232,7 @@
     "Lizenztyp": "offen"
   },
   "odc-by": {
-    "dcatde-id": "od-bc",
+    "dcatde-id": "odby",
     "Name": "Open Data Commons Attribution License (ODCBY)",
     "Lizenzcode": "odby",
     "Lizenztext": "http://www.opendefinition.org/licenses/odc-by",
@@ -240,7 +240,7 @@
     "Lizenztyp": "offen"
   },
   "odc-odbl": {
-    "dcatde-id": "od-bl",
+    "dcatde-id": "odbl",
     "Name": "Open Data Commons Open Database License (ODbL)",
     "Lizenzcode": "odbl",
     "Lizenztext": "http://www.opendefinition.org/licenses/odc-odbl",
