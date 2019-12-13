@@ -126,6 +126,11 @@ class DCATdeBerlinProfile(RDFProfile):
         publisher_ref = BNode()
         publisher_name = self._get_dataset_value(dataset_dict, 'author')
         publisher_url = self._get_dataset_value(dataset_dict, 'url')
+        # first, remove the publishers added by the generic RDF profile, as they
+        # are based on the CKAN Organization
+        for publisher in g.objects(dataset_ref, DCT.publisher):
+            g.remove( (dataset_ref, DCT.publisher, publisher) )
+
         g.add( (publisher_ref, RDF.type, FOAF.Organization) )
         g.add( (publisher_ref, FOAF.name, Literal(publisher_name)) )
         # if publisher_url:
