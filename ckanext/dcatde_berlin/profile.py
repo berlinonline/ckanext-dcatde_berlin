@@ -36,6 +36,8 @@ DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
 DCATDE_LIC = Namespace("http://dcat-ap.de/def/licenses/")
 DCATDE_CONTRIBUTORS = Namespace("http://dcat-ap.de/def/contributors/")
 
+ACCRUAL_METHODS = Namespace("https://daten.berlin.de/ns/dcatext/accrual#")
+
 namespaces = {
     # copied from ckanext.dcat.profiles
     'dct': DCT,
@@ -53,7 +55,9 @@ namespaces = {
     'mdrlang': MDRLANG ,
     'mdrtheme': MDRTHEME ,
     'dcatde': DCATDE ,
-    'dcatde-lic': DCATDE_LIC
+    'dcatde-lic': DCATDE_LIC ,
+    'contributor': DCATDE_CONTRIBUTORS ,
+    'accrual': ACCRUAL_METHODS ,
 }
 
 class DCATdeBerlinProfile(RDFProfile):
@@ -209,6 +213,14 @@ class DCATdeBerlinProfile(RDFProfile):
                 # Match distribution in graph and resource in ckan-dict
                 if unicode(distribution) == resource_uri(resource_dict):
                     self.enhance_distribution_resource(g, distribution, resource_dict, dist_additons)
+
+        # custom:
+
+        # add information about the technical source of this dataset (webform, simplesearch, harvester, etc.)
+
+        source = self._get_dataset_value(dataset_dict, 'berlin_source')
+        if (source):
+            g.add( (dataset_ref, DCT.accrualMethod, ACCRUAL_METHODS[source]) )
 
     def enhance_distribution_resource(self, g, distribution_ref, resource_dict, dist_additons):
 
