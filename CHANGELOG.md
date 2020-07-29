@@ -2,6 +2,10 @@
 
 ## Development
 
+## 0.2.1
+
+- Add a second DCAT `catalog` endpoint which returns only those datasets that were _not_ harveseted from FIS-Broker. URL is `/catalog_no_fb.{FORMAT}` (the regular endpoint is `/catalog.{FORMAT}`).
+
 ## 0.2.0
 
 - Add changelog.
