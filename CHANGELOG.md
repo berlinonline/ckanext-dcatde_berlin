@@ -2,6 +2,11 @@
 
 ## Development
 
+
+
+## [0.3.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/v0.3.0)
+
+- Switch from RST to Markdown for Readme.
 - Reformat changelog, add dates and version links.
 
 ## [0.2.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/v0.2.1)

@@ -6,7 +6,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the relevant file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
@@ -15,7 +15,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.0.1',
+    version='0.3.0',
 
     description='''Implementation of DCAT-AP.de for Berlin''',
     long_description=long_description,
@@ -43,12 +43,12 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
     ],
 
 
     # What does your project relate to?
-    keywords='''CKAN, dcat, dcat-ap.de''',
+    keywords='''CKAN DCAT DCAT-AP.de RDF''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
