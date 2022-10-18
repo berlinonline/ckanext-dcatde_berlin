@@ -4,10 +4,12 @@ import os
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+from ckanext.dcatde_berlin import no_fisbroker_blueprint
+
 class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IConfigurer, inherit=False)
-    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IBlueprint, inherit=True)
 
     # -------------------------------------------------------------------
     # Implementation IConfigurer
@@ -20,16 +22,9 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
         config['ckanext.dcatde.version'] = "1.0.1"
 
     # -------------------------------------------------------------------
-    # Implementation IRoutes
+    # Implementation IBlueprint
     # -------------------------------------------------------------------
 
-    def before_map(self, _map):
-
-        controller = 'ckanext.dcatde_berlin.controllers:FilteredDCATController'
-
-        _map.connect('dcat_catalog_no_fb',
-                     '/catalog_no_fb.{_format}',
-                     controller=controller, action='read_catalog',
-                     requirements={'_format': 'xml|rdf|n3|ttl|jsonld'})
-
-        return _map
+    def get_blueprint(self):
+        return no_fisbroker_blueprint.no_fisbroker_api
+    
