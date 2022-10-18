@@ -2,6 +2,7 @@
 
 ## Development
 
+- Add tests.
 - Convert to Python 3.
 - Replace IRoutes interface with IBlueprint.
 

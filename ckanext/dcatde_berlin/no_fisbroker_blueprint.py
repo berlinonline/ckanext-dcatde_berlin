@@ -8,7 +8,7 @@ from ckanext.dcat.utils import check_access_header, CONTENT_TYPES
 def read_catalog(format):
 
     if not format:
-        format = check_access_header()
+        format = check_access_header()  
 
     if not format:
         return index()
