@@ -17,9 +17,10 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
 
     def update_config(self, config):  
         config['ckanext.dcat.enable_content_negotiation'] = True
-        config['ckanext.dcat.rdf.profiles'] = "euro_dcat_ap dcatap_de"
-        config['ckanext.dcatde.contributorid'] = "berlinOpenData"
-        config['ckanext.dcatde.version'] = "1.0.1"
+        config['ckanext.dcat.rdf.profiles'] = 'euro_dcat_ap dcatap_de'
+        config['ckanext.dcatde.contributorid'] = 'berlinOpenData'
+        config['ckanext.dcatde.version'] = '1.0.1'
+        config['ckanext.dcatde_berlin.formats'] = 'ttl xml jsonld'
 
     # -------------------------------------------------------------------
     # Implementation IBlueprint
