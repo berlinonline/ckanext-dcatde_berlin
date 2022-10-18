@@ -3,11 +3,12 @@
 import os
 import json
 import logging
-import pylons
 
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import Namespace
 from rdflib.namespace import RDF, RDFS
+
+from ckan.common import config
 
 from ckanext.dcat.profiles import RDFProfile
 from ckanext.dcat.utils import resource_uri
@@ -103,7 +104,7 @@ class DCATdeBerlinProfile(RDFProfile):
         dist_additons = {}
 
         # bind namespaces to have readable names in RDF Document
-        for prefix, namespace in namespaces.iteritems():
+        for prefix, namespace in namespaces.items():
             g.bind(prefix, namespace)
 
         # TEMPORARY: fix whitespace in 'url':
@@ -114,7 +115,7 @@ class DCATdeBerlinProfile(RDFProfile):
             g.add( (dataset_ref, DCAT.landingPage, URIRef(url)) )
 
         # Nr. 40 - Contributor
-        contributorId = pylons.config.get('ckanext.dcatde.contributorid')
+        contributorId = config.get('ckanext.dcatde.contributorid')
         if contributorId:
             g.add((dataset_ref, DCATDE.contributorID, URIRef("{}{}".format(DCATDE_CONTRIBUTORS, contributorId))))
 
@@ -156,8 +157,9 @@ class DCATdeBerlinProfile(RDFProfile):
 
 
         # Nr. 48 - conformsTo (Application Profile der Metadaten)
-        dcatapde_version = pylons.config.get('ckanext.dcatde.version')
-        g.add((dataset_ref, DCT.conformsTo, URIRef("{}{}/".format(DCATDE, dcatapde_version))))
+        dcatapde_version = config.get('ckanext.dcatde.version')
+        if dcatapde_version:
+            g.add((dataset_ref, DCT.conformsTo, URIRef("{}{}/".format(DCATDE, dcatapde_version))))
 
         # Nr. 49 - 52 (Urheber, Verwalter, Bearbeiter, Autor) - we don't know this
 
@@ -211,7 +213,7 @@ class DCATdeBerlinProfile(RDFProfile):
         for resource_dict in dataset_dict.get('resources', []):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
                 # Match distribution in graph and resource in ckan-dict
-                if unicode(distribution) == resource_uri(resource_dict):
+                if str(distribution) == resource_uri(resource_dict):
                     self.enhance_distribution_resource(g, distribution, resource_dict, dist_additons)
 
         # custom:
