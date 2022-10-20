@@ -113,14 +113,6 @@ class DCATdeBerlinProfile(RDFProfile):
         if contributorId:
             g.add((dataset_ref, DCATDE.contributorID, URIRef("{}{}".format(DCATDE_CONTRIBUTORS, contributorId))))
 
-        # Nr. 41 - Contact Point
-        # If a maintainer name is given, set this to be the name of the 
-        # contact point. If not, use name of author/VÖ Stelle (ckanext-dcat default).
-        for contactPoint_ref in g.objects(dataset_ref, DCAT.contactPoint):
-            for email in g.objects(contactPoint_ref, VCARD.hasEmail):
-                g.remove( (contactPoint_ref, VCARD.hasEmail, Literal(email)) )
-                g.add( (contactPoint_ref, VCARD.hasEmail, URIRef("mailto:" + email)) )
-
         # Nr. 44 - Publisher
         publisher_ref = BNode()
         publisher_name = self._get_dataset_value(dataset_dict, 'author')
