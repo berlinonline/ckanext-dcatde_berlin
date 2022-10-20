@@ -187,10 +187,9 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Enhance Distributions
         ## License
-        if 'license_id' in dataset_dict:
-            ogd_license_code = dataset_dict['license_id']
-            if ogd_license_code in self.license_mapping:
-                dist_additons['license_id'] = self.license_mapping[ogd_license_code]['dcatde-id']
+        ogd_license_code = dataset_dict.get('license_id')
+        if ogd_license_code in self.license_mapping:
+            dist_additons['license_id'] = self.license_mapping[ogd_license_code]['dcatde-id']
 
         ## Attribution Text
         if 'attribution_text' in dataset_dict:
