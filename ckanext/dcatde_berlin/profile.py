@@ -90,12 +90,6 @@ class DCATdeBerlinProfile(RDFProfile):
 
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
-    def parse_dataset(self, dataset_dict, dataset_ref):
-
-        # We're not interested in parsing RDF datasets at the moment
-
-        return dataset_dict
-
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
         log.debug("dataset: {}".format(dataset_dict['name']))
