@@ -193,7 +193,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         ## Attribution Text
         if 'attribution_text' in dataset_dict:
-            dist_additons['attribution_text'] = dataset_dict.get('attribution_text').encode('utf-8')
+            dist_additons['attribution_text'] = dataset_dict.get('attribution_text')
 
         for resource_dict in dataset_dict.get('resources', []):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
