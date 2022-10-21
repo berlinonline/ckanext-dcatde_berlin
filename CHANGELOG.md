@@ -2,7 +2,7 @@
 
 ## Development
 
-## [0.3.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/v0.3.0)
+## [0.3.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.0)
 
 _(2022-10-21)_
 
