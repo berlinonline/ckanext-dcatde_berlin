@@ -41,5 +41,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+ckanenv/
 temp/
 .DS_Store

@@ -5,7 +5,7 @@ import pytest
 
 import ckan.tests.factories as factories
 
-from ckanext.dcatde_berlin.tests import datasets, berlin_dataset
+from ckanext.dcatde_berlin.tests import datasets, berlin_dataset, fisbroker_datasets
 
 PLUGIN_NAME = 'dcatde_berlin'
 LOG = logging.getLogger(__name__)
@@ -54,10 +54,11 @@ class TestProfileWithSchema(object):
         assert 'dcatde:politicalGeocodingLevelURI <http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict>' in response.body
         assert 'dct:spatial <http://www.geonames.org/2870912>' in response.body
 
-    def test_legal_basis_was_mapped(self, app, berlin_dataset):
+    def test_legal_basis_was_mapped(self, app, fisbroker_datasets):
         '''Check that, in certain cases, the legal basis for publishing Open Data has been derived from the organization.'''
+        dataset = fisbroker_datasets['fb'][0]
         response = app.get(
-            url=f"/dataset/{berlin_dataset['name']}.ttl",
+            url=f"/dataset/{dataset['name']}.ttl",
             follow_redirects=False,
             status=200,
         )

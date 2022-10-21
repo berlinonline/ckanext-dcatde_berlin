@@ -2,12 +2,13 @@
 
 ## Development
 
-- Add tests.
-- Convert to Python 3.
-- Replace IRoutes interface with IBlueprint.
-
 ## [0.3.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/v0.3.0)
 
+_(2022-10-21)_
+
+- Convert to Python 3.
+- Replace IRoutes interface with IBlueprint.
+- Add tests.
 - Switch from RST to Markdown for Readme.
 - Reformat changelog, add dates and version links.
 
