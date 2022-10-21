@@ -15,7 +15,6 @@ def read_catalog(format=None):
     valid_formats = config.get('ckanext.dcatde_berlin.formats').split()
 
     try:
-        import pdb; pdb.set_trace()
         if not format:
             format = check_access_header()
 
