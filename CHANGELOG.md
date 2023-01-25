@@ -2,7 +2,14 @@
 
 ## Development
 
-# [0.3.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.1)
+## [0.3.2](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.2)
+
+_(2023-01-25)_
+
+- Fix changelog.
+- Fix manifest.
+
+## [0.3.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.1)
 
 _(2022-10-25)_
 
