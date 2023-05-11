@@ -6,6 +6,8 @@ from ckan.views.home import index
 
 from ckanext.dcat.utils import check_access_header, CONTENT_TYPES
 
+CATALOG_ENDPOINT_PATH = "catalog_no_fb"
+
 def read_catalog(format=None):
 
     def validate_format(format):
@@ -40,9 +42,9 @@ def read_catalog(format=None):
 
 
 no_fisbroker_api = Blueprint('no_fisbroker_api', __name__)
-no_fisbroker_api.add_url_rule(u'/catalog_no_fb.<format>',
-                        methods=[u'GET'], view_func=read_catalog)
-no_fisbroker_api.add_url_rule(u'/catalog_no_fb',
+no_fisbroker_api.add_url_rule(f'/{CATALOG_ENDPOINT_PATH}.<format>',
+                        methods=['GET'], view_func=read_catalog)
+no_fisbroker_api.add_url_rule(f'/{CATALOG_ENDPOINT_PATH}',
                         methods=[u'GET'], view_func=read_catalog)
 
 

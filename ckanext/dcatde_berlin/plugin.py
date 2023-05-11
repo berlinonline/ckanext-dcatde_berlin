@@ -21,6 +21,7 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
         config['ckanext.dcatde.contributorid'] = 'berlinOpenData'
         config['ckanext.dcatde.version'] = '1.0.1'
         config['ckanext.dcatde_berlin.formats'] = 'ttl xml jsonld'
+        config['ckanext.dcatde_berlin.additional_endpoints'] = f'/{no_fisbroker_blueprint.CATALOG_ENDPOINT_PATH}'
 
     # -------------------------------------------------------------------
     # Implementation IBlueprint

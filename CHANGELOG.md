@@ -2,6 +2,8 @@
 
 ## Development
 
+- Set `ckanext.dcatde_berlin.additional_endpoints` in code, derived from the `catalog_no_fb` endpoint's blueprint.
+
 ## [0.3.2](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.2)
 
 _(2023-01-25)_
