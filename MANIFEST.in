@@ -2,4 +2,3 @@ include README.md
 include LICENSE
 include VERSION
 include requirements.txt
-recursive-include ckanext/dcatde_berlin *.html *.json *.js *.less *.css *.mo
