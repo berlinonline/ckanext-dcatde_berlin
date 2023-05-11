@@ -3,6 +3,7 @@
 ## Development
 
 - Set `ckanext.dcatde_berlin.additional_endpoints` in code, derived from the `catalog_no_fb` endpoint's blueprint.
+- Fix bug where unknown groups (categories) would lead to a key error.
 
 ## [0.3.2](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.2)
 

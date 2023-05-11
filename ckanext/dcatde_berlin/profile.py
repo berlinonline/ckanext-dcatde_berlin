@@ -131,7 +131,7 @@ class DCATdeBerlinProfile(RDFProfile):
         # Nr. 45 - Kategorie
         groups = self._get_dataset_value(dataset_dict, 'groups')
         for group in groups:
-            dcat_groups = self.category_mapping[group['name']]
+            dcat_groups = self.category_mapping.get(group['name'], None)
             if dcat_groups is not None:
                 for dcat_group in dcat_groups:
                     g.add( (dataset_ref, DCAT.theme, MDRTHEME[dcat_group]) )
