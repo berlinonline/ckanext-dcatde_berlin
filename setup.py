@@ -9,7 +9,7 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-with open(path.join(here, 'VERSION')) as version_file:
+with open(path.join(here, 'ckanext', 'dcatde_berlin', 'VERSION')) as version_file:
     version = version_file.read().strip()
 
 setup(
@@ -70,9 +70,6 @@ setup(
     # have to be included in MANIFEST.in as well.
     include_package_data=True,
 
-    data_files=[
-        ('',['VERSION'])
-    ],
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
