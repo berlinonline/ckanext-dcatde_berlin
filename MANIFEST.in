@@ -2,3 +2,4 @@ include README.md
 include LICENSE
 include requirements.txt
 include ckanext/dcatde_berlin/VERSION
+include ckanext/dcatde_berlin/mappings/*.json
