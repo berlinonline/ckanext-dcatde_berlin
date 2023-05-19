@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.4](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.4)
+
+_(2023-05-19)_
+
+- Fix packaging to ensure VERSION file and mapping JSON files are included in built distributions.
+
 ## [0.3.3](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.3)
 
 _(2023-05-11)_
