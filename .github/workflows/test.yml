@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
 
     name: CKAN ${{ matrix.ckan-base-version }}
-    runs-on: ubuntu-latest
+    runs-on: alpine-latest
     container:
       image: ckan/ckan-dev:${{ matrix.ckan-base-version }}
     services:
@@ -51,7 +51,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install CURL
-      run: apt install curl -y
+      run: apk install curl -y
     - name: Install requirements
       run: |
         pip install -r dev-requirements.txt
