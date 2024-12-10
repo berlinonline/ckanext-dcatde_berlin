@@ -11,7 +11,7 @@ jobs:
         ckan-base-version: [2.9]
         ckan-version: [py3.9]
         solr-version: [solr8]
-      fail-fast: false
+      fail-fast: false  
 
     name: CKAN ${{ matrix.ckan-base-version }}
     runs-on: ubuntu-latest
@@ -37,7 +37,9 @@ jobs:
       CKAN_REDIS_URL: redis://redis:6379/1
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+    - name: Install CURL
+      run: apk install curl -y    
     - name: Install requirements
       run: |
         pip install -r dev-requirements.txt
