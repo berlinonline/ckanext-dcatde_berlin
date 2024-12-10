@@ -6,11 +6,12 @@ on:
 jobs:
   test:
     # needs: lint
-    matrix:
-      ckan-base-version: [2.9]
-      ckan-version: [py3.9]
-      solr-version: [solr8]
-    fail-fast: false
+    strategy:
+      matrix:
+        ckan-base-version: [2.9]
+        ckan-version: [py3.9]
+        solr-version: [solr8]
+      fail-fast: false
 
     name: CKAN ${{ matrix.ckan-base-version }}
     runs-on: ubuntu-latest
