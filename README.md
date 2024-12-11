@@ -1,4 +1,4 @@
-# ckanext-berlindcatde_berlinath
+# ckanext-berlindcatde
 
 [![Tests](https://github.com/berlinonline/ckanext-dcatde_berlin/workflows/Tests/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-dcatde_berlin/actions)
 [![Code Coverage](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin?branch=master)
@@ -20,7 +20,7 @@ This plugin has been tested with CKAN 2.9.5 (which requires Python 3).
 
 ## License
 
-This material is copyright © [BerlinOnline Stadtportal GmbH & Co. KG](https://www.berlinonline.net/).
+This material is copyright © [BerlinOnline Stadtportal GmbH](https://www.berlinonline.net/).
 
 This extension is open and licensed under the GNU Affero General Public License (AGPL) v3.0.
 Its full text may be found at:
