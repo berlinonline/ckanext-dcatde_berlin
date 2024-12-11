@@ -1,4 +1,4 @@
-# ckanext-berlindcatde
+# ckanext-dcatde_berlin
 
 [![Tests](https://github.com/berlinonline/ckanext-dcatde_berlin/workflows/Tests/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-dcatde_berlin/actions)
 [![Code Coverage](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin?branch=master)
