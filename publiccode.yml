@@ -1,0 +1,68 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: ckanext-dcatde_berlin
+applicationSuite: CKAN
+url: 'https://github.com/berlinonline/ckanext-dcatde_berlin'
+releaseDate: '2018-07-12'
+softwareVersion: 0.3.5
+developmentStatus: stable
+platforms:
+  - web
+softwareType: addon
+isBasedOn: 'https://github.com/GovDataOfficial/ckanext-dcatde'
+categories:
+  - knowledge-management
+  - it-development
+maintenance:
+  type: internal
+  contacts:
+    - name: Dr. Knud Möller
+      email: knud.moeller@berlinonline.de
+legal:
+  license: GPL-3.0-only
+  mainCopyrightOwner: BerlinOnline GmbH
+  repoOwner: BerlinOnline GmbH
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - en
+description:
+  en:
+    genericName: ckanext-dcatde_berlin
+    documentation: 'https://github.com/berlinonline/ckanext-dcatde_berlin?'
+    shortDescription: >-
+      This plugin belongs to a set of plugins for the Datenregister – the
+      non-public CKAN instance that is part of Berlin's open data portal
+      daten.berlin.de
+    longDescription: >
+      This plugin belongs to a set of plugins for the _Datenregister_ – the
+      non-public [CKAN](https://ckan.org/) instance that is part of Berlin's
+      open data portal [daten.berlin.de](https://daten.berlin.de/).
+
+
+      `ckanext-dcatde\_berlin` pefines a profile `dcatap\_de` that needs to be
+      layered right on top of `euro\_dcat\_ap`, as defined in
+      [ckanext-dcat](https://github.com/ckan/ckanext-dcat).
+
+
+      `ckanext-dcatde\_berlin` draws heavily on
+      [ckanext-dcatde](https://github.com/GovDataOfficial/ckanext-dcatde), but
+      is separate, because the underlying CKAN schema isn't quite the same, and
+      because `ckanext-dcatde\_berlin` requires the CKAN DB to be converted
+      before it can be used.
+
+
+      The plugin implements the following CKAN interfaces:
+
+
+      -
+      [IBlueprint](http://docs.ckan.org/en/latest/extensions/plugin-interfaces.html#ckan.plugins.interfaces.IBlueprint)
+
+
+      ## Requirements
+
+
+      This plugin has been tested with CKAN 2.9.11 (which requires Python 3).
