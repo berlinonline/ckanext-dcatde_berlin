@@ -7,7 +7,7 @@ name: ckanext-dcatde_berlin
 applicationSuite: CKAN
 url: 'https://github.com/berlinonline/ckanext-dcatde_berlin'
 releaseDate: '2018-07-12'
-softwareVersion: 0.3.4
+softwareVersion: 0.3.5
 developmentStatus: stable
 platforms:
   - web
