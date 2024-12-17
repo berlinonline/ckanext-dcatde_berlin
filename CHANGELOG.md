@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.5](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.5)
+
+- Update config settings (read from .ini file or use default value if the variable is not set)
+- Add OpenCode publiccode.yml file
+- Update Readme
+
 ## [0.3.4](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.4)
 
 _(2023-05-19)_
