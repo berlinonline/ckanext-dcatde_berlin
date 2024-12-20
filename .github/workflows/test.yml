@@ -43,6 +43,7 @@ jobs:
       run: apt install curl -y
     - name: Install requirements
       run: |
+        pip install setuptools==44.1.0
         pip install -r dev-requirements.txt
         pip install -e .
         # Replace default path to CKAN core config file with the one on the container
