@@ -40,7 +40,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install CURL
-      run: apk install curl -y
+      run: apt install curl -y
     - name: Install requirements
       run: |
         pip install -r dev-requirements.txt
