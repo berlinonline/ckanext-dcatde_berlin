@@ -1,7 +1,7 @@
 # ckanext-dcatde_berlin
 
-[![Tests](https://github.com/berlinonline/ckanext-dcatde_berlin/workflows/Tests/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-dcatde_berlin/actions)
-[![Code Coverage](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin?branch=master)
+[![Tests](https://github.com/berlinonline/ckanext-dcatde_berlin/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/berlinonline/ckanext-dcatde_berlin/actions)
+[![Code Coverage](https://codecov.io/github/berlinonline/ckanext-dcatde_berlin/coverage.svg?branch=master)](http://codecov.io/github/berlinonline/ckanext-dcatde_berlin?branch=master)
 
 This plugin belongs to a set of plugins for the _Datenregister_ – the non-public [CKAN](https://ckan.org) instance that is part of Berlin's open data portal [daten.berlin.de](https://daten.berlin.de).
 
