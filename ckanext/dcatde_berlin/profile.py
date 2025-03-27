@@ -33,11 +33,11 @@ VOID = Namespace('http://rdfs.org/ns/void#')
 # own namespaces
 MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/')
 MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-theme/')
-DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
-DCATDE_LIC = Namespace("http://dcat-ap.de/def/licenses/")
-DCATDE_CONTRIBUTORS = Namespace("http://dcat-ap.de/def/contributors/")
+DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
+DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
+DCATDE_CONTRIBUTORS = Namespace('http://dcat-ap.de/def/contributors/')
 
-ACCRUAL_METHODS = Namespace("https://daten.berlin.de/ns/dcatext/accrual#")
+ACCRUAL_METHODS = Namespace('https://daten.berlin.de/ns/dcatext/accrual#')
 
 namespaces = {
     # copied from ckanext.dcat.profiles
