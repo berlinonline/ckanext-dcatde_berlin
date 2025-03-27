@@ -2,6 +2,8 @@
 
 ## Development
 
+- Fix license key for CC BY 4.0 in [licenses.json](ckanext/dcatde_berlin/mappings/licenses.json).
+
 ## [0.3.5](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.5)
 
 _(2024-12-20)_
