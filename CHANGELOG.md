@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.3.6](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.6)
+
+_(2025-03-27)_
+
 - Expose HVD (high-value dataset) category with `dct:references` (see https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verweis-auf-referenzobjekte).
 - Fix license key for CC BY 4.0 in [licenses.json](ckanext/dcatde_berlin/mappings/licenses.json).
 
