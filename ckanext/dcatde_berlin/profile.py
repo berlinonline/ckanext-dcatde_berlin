@@ -36,6 +36,7 @@ MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-them
 DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
 DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
 DCATDE_CONTRIBUTORS = Namespace('http://dcat-ap.de/def/contributors/')
+HVD = Namespace('http://data.europa.eu/bna/')
 
 ACCRUAL_METHODS = Namespace('https://daten.berlin.de/ns/dcatext/accrual#')
 
@@ -184,6 +185,14 @@ class DCATdeBerlinProfile(RDFProfile):
         if org and org['name'] in self.legalBasis['mapping']:
             legalbasisText = self.legalBasis['mapping'][org['name']]
         g.add( (dataset_ref, DCATDE.legalbasisText, Literal(legalbasisText)) )
+
+        # Verweis auf Referenzobjekte
+        # https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verweis-auf-referenzobjekte
+
+        hvd_category = dataset_dict.get('hvd_category')
+        if hvd_category:
+            hvd_link = HVD[hvd_category]
+            g.add( (dataset_ref, DCT.references, hvd_link) )
 
         # Enhance Distributions
         ## License
