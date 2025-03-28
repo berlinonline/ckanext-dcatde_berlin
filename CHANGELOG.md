@@ -2,6 +2,8 @@
 
 ## Development
 
+- WFS and WMS resources are now output as a `dcat:DataService` and matching service distribution. See https://www.dcat-ap.de/def/dcatde/2.0/implRules/#modellierung-eines-datenservices.
+
 ## [0.3.7](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.7)
 
 _(2025-03-28)_

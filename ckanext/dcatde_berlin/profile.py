@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import os
 import json
 import logging
-
-from rdflib import URIRef, BNode, Literal
-from rdflib.namespace import Namespace
-from rdflib.namespace import RDF, RDFS
+import os
+from urllib.parse import urlparse
 
 from ckan.common import config
+from rdflib import BNode, Graph, Literal, Namespace, URIRef
+from rdflib.namespace import RDF, RDFS
 
 from ckanext.dcat.profiles import RDFProfile
 from ckanext.dcat.utils import resource_uri
@@ -36,6 +35,7 @@ MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-them
 DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
 DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
 DCATDE_CONTRIBUTORS = Namespace('http://dcat-ap.de/def/contributors/')
+FILE_TYPES = Namespace('http://publications.europa.eu/resource/authority/file-type/')
 HVD = Namespace('http://data.europa.eu/bna/')
 MUSTERD = Namespace('https://musterdatenkatalog.de/def/musterdatensatz/')
 
@@ -61,9 +61,12 @@ namespaces = {
     'dcatde-lic': DCATDE_LIC ,
     'contributor': DCATDE_CONTRIBUTORS ,
     'accrual': ACCRUAL_METHODS ,
+    'file-type': FILE_TYPES ,
     'hvd': HVD ,
     'musterd': MUSTERD ,
 }
+
+SERVICE_TYPES = [ 'WFS', 'WMS' ]
 
 class DCATdeBerlinProfile(RDFProfile):
     '''
@@ -216,7 +219,7 @@ class DCATdeBerlinProfile(RDFProfile):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
                 # Match distribution in graph and resource in ckan-dict
                 if str(distribution) == resource_uri(resource_dict):
-                    self.enhance_distribution_resource(g, distribution, resource_dict, dist_additons)
+                    self.enhance_distribution_resource(g=g, distribution_ref=distribution, dataset_ref=dataset_ref, resource_dict=resource_dict, dist_additons=dist_additons, dataset_dict=dataset_dict)
 
         # custom:
 
@@ -226,7 +229,7 @@ class DCATdeBerlinProfile(RDFProfile):
         if (source):
             g.add( (dataset_ref, DCT.accrualMethod, ACCRUAL_METHODS[source]) )
 
-    def enhance_distribution_resource(self, g, distribution_ref, resource_dict, dist_additons):
+    def enhance_distribution_resource(self, g: Graph, distribution_ref: URIRef, dataset_ref: URIRef, resource_dict: dict, dist_additons: dict, dataset_dict: dict):
 
         # TEMPORARY: fix whitespace in 'url':
         url = resource_dict['url']
@@ -239,17 +242,57 @@ class DCATdeBerlinProfile(RDFProfile):
         if 'license_id' in dist_additons:
             g.add( (distribution_ref, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
 
+        # Nr. 93 - dcatde:licenseAttributionByText
+        if 'attribution_text' in dist_additons:
+            g.add( (distribution_ref, DCATDE.licenseAttributionByText, Literal(dist_additons['attribution_text'])) )
+
         # Nr. 78 - Format
         for format_string in g.objects(distribution_ref, DCT['format']):
             g.remove( (distribution_ref, DCT['format'], Literal(format_string)) )
             format_string = format_string.toPython()
-            if format_string in self.format_mapping:
+            if format_string in SERVICE_TYPES:
+
+                # remove this distribution ...
+                self.remove_distribution(g=g, distribution_ref=distribution_ref)
+
+                # and replace it with a service distribution and service
+                service_dist_res = os.path.join(dataset_ref, 'distribution', format_string.lower())
+                service_res = os.path.join(dataset_ref, 'service', format_string.lower())
+                g.add( (dataset_ref, DCAT.distribution, service_dist_res) )
+
+                g.add( (service_dist_res, RDF.type, DCAT.Distribution) )
+                g.add( (service_dist_res, DCT['format'], FILE_TYPES['XML']) )
+                g.add( (service_dist_res, DCT.accessService, service_res) )
+                g.add( (service_dist_res, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
+                g.add( (service_dist_res, DCT.title, Literal(f"Distribution für den Datenservice für '{dataset_dict['title']}'")) )
+
+                g.add( (service_res, RDF.type, DCAT.DataService) )
+                g.add( (service_res, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
+                g.add( (service_res, DCT.title, Literal(f"Datenservice für '{dataset_dict['title']}'")) )
+
+                res_url = resource_dict['url']
+                res_url_query = urlparse(res_url).query
+                if res_url_query:
+                    if 'GetCapabilities' in res_url_query:
+                        # this resource probably is the service description
+                        g.add( (service_res, DCAT.endpointDescription, URIRef(res_url)) )
+                        g.add( (service_res, DCAT.servesDataset, dataset_ref) )
+                else:
+                    # this resource is probably the endpoint
+                    g.add( (service_dist_res, DCAT.accessURL, URIRef(res_url)) )
+                    g.add( (service_res, DCAT.endpointURL, URIRef(res_url)) )
+
+                    g.add( (service_dist_res, DCAT.accessURL, URIRef(resource_dict['url'])) )
+
+            elif format_string in self.format_mapping:
                 format_uri = self.format_mapping[format_string]['uri']
                 g.add( (distribution_ref, DCT['format'], URIRef(format_uri)) )
             else:
                 log.warning("No mapping found for format string '{}'".format(format_string))
 
-        # Nr. 93 - dcatde:licenseAttributionByText
-        if 'attribution_text' in dist_additons:
-            g.add( (distribution_ref, DCATDE.licenseAttributionByText, Literal(dist_additons['attribution_text'])) )       
 
+    def remove_distribution(self, g: Graph, distribution_ref: URIRef):
+        for s, p, o in g.triples( (distribution_ref, None, None) ):
+            g.remove( (distribution_ref, p, o) )
+        for s, p, o in g.triples( (None, None, distribution_ref) ):
+            g.remove( (s, p, distribution_ref) )
