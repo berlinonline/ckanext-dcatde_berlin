@@ -2,6 +2,12 @@
 
 ## Development
 
+## [0.3.7](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.7)
+
+_(2025-03-28)_
+
+- Expose Musterdatensatz (sample record) with `dct:references` (see https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verweis-auf-referenzobjekte).
+
 ## [0.3.6](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.6)
 
 _(2025-03-27)_

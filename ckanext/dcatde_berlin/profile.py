@@ -37,6 +37,7 @@ DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
 DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
 DCATDE_CONTRIBUTORS = Namespace('http://dcat-ap.de/def/contributors/')
 HVD = Namespace('http://data.europa.eu/bna/')
+MUSTERD = Namespace('https://musterdatenkatalog.de/def/musterdatensatz/')
 
 ACCRUAL_METHODS = Namespace('https://daten.berlin.de/ns/dcatext/accrual#')
 
@@ -60,6 +61,8 @@ namespaces = {
     'dcatde-lic': DCATDE_LIC ,
     'contributor': DCATDE_CONTRIBUTORS ,
     'accrual': ACCRUAL_METHODS ,
+    'hvd': HVD ,
+    'musterd': MUSTERD ,
 }
 
 class DCATdeBerlinProfile(RDFProfile):
@@ -193,6 +196,11 @@ class DCATdeBerlinProfile(RDFProfile):
         if hvd_category:
             hvd_link = HVD[hvd_category]
             g.add( (dataset_ref, DCT.references, hvd_link) )
+
+        sample_record = dataset_dict.get('sample_record')
+        if sample_record:
+            sample_record_link = MUSTERD[sample_record]
+            g.add( (dataset_ref, DCT.references, sample_record_link) )
 
         # Enhance Distributions
         ## License
