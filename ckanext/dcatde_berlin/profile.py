@@ -12,7 +12,7 @@ from rdflib.namespace import RDF, RDFS
 from ckanext.dcat.profiles import RDFProfile
 from ckanext.dcat.utils import resource_uri
 
-log = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
 # copied from ckanext.dcat.profiles
 DCT = Namespace("http://purl.org/dc/terms/")
@@ -99,7 +99,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
-        log.debug("dataset: {}".format(dataset_dict['name']))
+        LOG.debug("dataset: {}".format(dataset_dict['name']))
         g = self.g
 
         dist_additons = {}
@@ -221,6 +221,12 @@ class DCATdeBerlinProfile(RDFProfile):
                 if str(distribution) == resource_uri(resource_dict):
                     self.enhance_distribution_resource(g=g, distribution_ref=distribution, dataset_ref=dataset_ref, resource_dict=resource_dict, dist_additons=dist_additons, dataset_dict=dataset_dict)
 
+        # fixes:
+        for s1, p1, o1 in g.triples( (dataset_ref, DCT.spatial, None) ):
+            for spatial, p2, geometry in g.triples( (o1, LOCN.geometry, None)):
+                if geometry.datatype != GSP.wktLiteral:
+                    g.remove( (spatial, LOCN.geometry, geometry) )
+
         # custom:
 
         # add information about the technical source of this dataset (webform, simplesearch, harvester, etc.)
@@ -288,7 +294,7 @@ class DCATdeBerlinProfile(RDFProfile):
                 format_uri = self.format_mapping[format_string]['uri']
                 g.add( (distribution_ref, DCT['format'], URIRef(format_uri)) )
             else:
-                log.warning("No mapping found for format string '{}'".format(format_string))
+                LOG.warning("No mapping found for format string '{}'".format(format_string))
 
 
     def remove_distribution(self, g: Graph, distribution_ref: URIRef):
