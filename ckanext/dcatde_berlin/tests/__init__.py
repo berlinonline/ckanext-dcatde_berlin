@@ -67,7 +67,11 @@ def berlin_dataset():
         maintainer_email='opendata@kbodman.berlin.de',
         attribution_text='Die königlich berlinische Open-Data-Manufaktur',
     )
-    factories.Resource(package_id=dataset["id"], format="CSV")
-    factories.Resource(package_id=dataset["id"], format="UNKNOWN_FORMAT")
-    return dataset
+    csv_res = factories.Resource(package_id=dataset["id"], format="CSV")
+    unknown_res = factories.Resource(package_id=dataset["id"], format="UNKNOWN_FORMAT")
+    return {
+        'dataset': dataset,
+        'csv_resource': csv_res,
+        'unknown_resource': unknown_res,
+    }
 
