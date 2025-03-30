@@ -19,11 +19,11 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
         config['ckanext.dcat.enable_content_negotiation'] = config.get(
         'ckanext.dcat.enable_content_negotiation', True)
         config['ckanext.dcat.rdf.profiles'] = config.get(
-        'ckanext.dcat.rdf.profiles', 'euro_dcat_ap dcatap_de')
+        'ckanext.dcat.rdf.profiles', 'euro_dcat_ap_2 dcatap_de')
         config['ckanext.dcatde.contributorid'] = config.get(
         'ckanext.dcatde.contributorid','berlinOpenData')
         config['ckanext.dcatde.version'] = config.get(
-        'ckanext.dcatde.version', '1.0.1')
+        'ckanext.dcatde.version', '2.0')
         config['ckanext.dcatde_berlin.formats'] = config.get(
         'ckanext.dcatde_berlin.formats', 'ttl xml jsonld rdf')
         config['ckanext.dcatde_berlin.additional_endpoints'] = config.get(
