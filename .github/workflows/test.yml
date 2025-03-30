@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
 
     name: CKAN ${{ matrix.ckan-base-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
       image: ckan/ckan-dev:${{ matrix.ckan-base-version }}-${{ matrix.ckan-version }}
       options: --user root
