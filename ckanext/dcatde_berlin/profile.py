@@ -280,7 +280,7 @@ class DCATdeBerlinProfile(RDFProfile):
                 res_url_query = urlparse(res_url).query
                 if res_url_query:
                     if 'GetCapabilities' in res_url_query:
-                        # this resource probably is the service description
+                        # this resource is probably the service description
                         g.add( (service_res, DCAT.endpointDescription, URIRef(res_url)) )
                         g.add( (service_res, DCAT.servesDataset, dataset_ref) )
                 else:
