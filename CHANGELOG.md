@@ -7,6 +7,7 @@
 - Unit tests that check RDF output are now based on parsing with rdflib, rather than just looking for strings (which is brittle, because representations can differ).
 - Use `euro_dcat_ap_2` as the base profile.
 - Announce that we're outputting DCAT-AP.de 2.0.
+- Check for presence of special tags/keywords with the pattern `HVD_{ID}` and add corresponding `dct:references` statements to output. This is to support the setting of high-value dataset categories for external data sources systems (e.g. harvested portals and Imperia) that do not (yet) have a mechanism for setting HVD catgories.
 
 ## [0.3.7](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.7)
 

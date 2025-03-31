@@ -1,16 +1,22 @@
 '''Tests to determine if the profile's conversion code works correctly.'''
 
-from email.mime import base
 import logging
-from os import path
 import urllib.parse
+from email.mime import base
+from os import path
 
 import ckan.tests.factories as factories
 import pytest
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, RDF
 
-from ckanext.dcatde_berlin.tests import berlin_dataset, datasets, fisbroker_datasets
+from ckanext.dcatde_berlin.tests import (
+    HVD_CODE,
+    berlin_dataset,
+    datasets,
+    fisbroker_datasets,
+    hvd_dataset_tag,
+)
 
 PLUGIN_NAME = 'dcatde_berlin'
 LOG = logging.getLogger(__name__)
@@ -18,7 +24,9 @@ LOG = logging.getLogger(__name__)
 DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
 DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
 FILE_TYPES = Namespace('http://publications.europa.eu/resource/authority/file-type/')
+HVD = Namespace('http://data.europa.eu/bna/')
 MDRTHEME = Namespace('http://publications.europa.eu/resource/authority/data-theme/')
+MUSTERD = Namespace('https://musterdatenkatalog.de/def/musterdatensatz/')
 
 @pytest.mark.ckan_config('ckan.plugins', f'dcat {PLUGIN_NAME}')
 @pytest.mark.usefixtures('clean_db', 'clean_index', 'with_plugins')
@@ -91,6 +99,24 @@ class TestProfileWithSchema(object):
         g, base_url = get_graph_and_base_url(app, dataset['name'])
         csv_resource = get_resource(base_url, dataset, berlin_dataset['csv_resource'])
         assert (csv_resource, DCTERMS.format, FILE_TYPES.CSV) in g
+
+    def test_references(self, app, berlin_dataset):
+        '''Check that the dataset's references (HVD and Musterdatensatz) are included.'''
+        dataset = berlin_dataset['dataset']
+        g, base_url = get_graph_and_base_url(app, dataset['name'])
+        dataset_res = URIRef(path.join(base_url, 'dataset', dataset['id']))
+        hvd_res = HVD[dataset['hvd_category']]
+        assert (dataset_res, DCTERMS.references, hvd_res) in g
+        sample_record_res = MUSTERD[dataset['sample_record']]
+        assert (dataset_res, DCTERMS.references, sample_record_res) in g
+
+    def test_references_from_tag(self, app, hvd_dataset_tag):
+        '''Check that specific HVD tags have been included as `dct:references` statements.'''
+        dataset = hvd_dataset_tag['dataset']
+        g, base_url = get_graph_and_base_url(app, dataset['name'])
+        dataset_res = URIRef(path.join(base_url, 'dataset', dataset['id']))
+        hvd_res = HVD[f'c_{HVD_CODE}']
+        assert (dataset_res, DCTERMS.references, hvd_res) in g
 
 def get_graph_and_base_url(app, package_name: str) -> tuple[Graph, str]:
     response = app.get(

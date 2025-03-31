@@ -3,6 +3,8 @@ import pytest
 import ckan.tests.factories as factories
 import ckan.tests.helpers as helpers
 
+HVD_CODE = 'e1da4e07'
+
 @pytest.fixture
 def datasets():
     org = factories.Organization()
@@ -66,6 +68,8 @@ def berlin_dataset():
         date_released='2022-10-19',
         maintainer_email='opendata@kbodman.berlin.de',
         attribution_text='Die königlich berlinische Open-Data-Manufaktur',
+        hvd_category=f'c_{HVD_CODE}',
+        sample_record='bildung/hochschule/studentenwohnheim',
     )
     csv_res = factories.Resource(package_id=dataset["id"], format="CSV")
     unknown_res = factories.Resource(package_id=dataset["id"], format="UNKNOWN_FORMAT")
@@ -73,5 +77,29 @@ def berlin_dataset():
         'dataset': dataset,
         'csv_resource': csv_res,
         'unknown_resource': unknown_res,
+    }
+
+@pytest.fixture
+def hvd_dataset_tag():
+    '''Fixture for a dataset that conforms to the Berlin CKAN metadata schema.'''
+    org = factories.Organization(name='koenigliche-open-data-manufaktur')
+    group = factories.Group(name='arbeit')
+    dataset = factories.Dataset(
+        owner_org=org['id'],
+        groups=[{'id': group['id'], 'name': group['name']}],
+        geographical_coverage='Mitte',
+        license_id='cc-zero',
+        berlin_source='webform',
+        author='KB-ODMAN',
+        berlin_type='datensatz',
+        date_released='2022-10-19',
+        maintainer_email='opendata@kbodman.berlin.de',
+        attribution_text='Die königlich berlinische Open-Data-Manufaktur',
+        tags=[{'name': f'HVD_{HVD_CODE}'}],
+    )
+    csv_res = factories.Resource(package_id=dataset["id"], format="CSV")
+    return {
+        'dataset': dataset,
+        'csv_resource': csv_res,
     }
 

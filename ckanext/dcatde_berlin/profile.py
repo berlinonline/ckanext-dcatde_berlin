@@ -66,6 +66,7 @@ namespaces = {
     'musterd': MUSTERD ,
 }
 
+HVD_PREFIX = 'HVD_'
 SERVICE_TYPES = [ 'WFS', 'WMS' ]
 
 class DCATdeBerlinProfile(RDFProfile):
@@ -222,10 +223,20 @@ class DCATdeBerlinProfile(RDFProfile):
                     self.enhance_distribution_resource(g=g, distribution_ref=distribution, dataset_ref=dataset_ref, resource_dict=resource_dict, dist_additons=dist_additons, dataset_dict=dataset_dict)
 
         # fixes:
+        # each dct:spatial must have only one locn:geometry
         for s1, p1, o1 in g.triples( (dataset_ref, DCT.spatial, None) ):
             for spatial, p2, geometry in g.triples( (o1, LOCN.geometry, None)):
                 if geometry.datatype != GSP.wktLiteral:
                     g.remove( (spatial, LOCN.geometry, geometry) )
+
+        # look for special 'HVD_' tags and create dct:references statements from them
+        for tag in dataset_dict['tags']:
+            tag_name = tag['name'].strip()
+            if tag_name.startswith(HVD_PREFIX):
+                hvd_code = tag_name.split(HVD_PREFIX)[-1].strip()
+                hvd_category = f'c_{hvd_code}'
+                hvd_link = HVD[hvd_category]
+                g.add( (dataset_ref, DCT.references, hvd_link) )
 
         # custom:
 
