@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.3.8](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.8)
+
+_(2025-03-28)_
+
 - WFS and WMS resources are now output as a `dcat:DataService` and matching service distribution. See https://www.dcat-ap.de/def/dcatde/2.0/implRules/#modellierung-eines-datenservices.
 - Ensure that there is always a maximum of one `locn:geometry` per `dct:Location`. It should be the one with datatype `gsp:wktLiteral`.
 - Unit tests that check RDF output are now based on parsing with rdflib, rather than just looking for strings (which is brittle, because representations can differ).
