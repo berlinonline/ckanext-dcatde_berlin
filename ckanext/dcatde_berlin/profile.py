@@ -217,7 +217,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Enhance Distributions
         ## License
-        dist_additions['license_id'] = self.map_license_code(dataset_dict.get('license_id'), 'unknown')
+        dist_additions['license_id'] = self.map_license_code(dataset_dict.get('license_id', 'unknown'))
 
         ## Attribution Text
         if 'attribution_text' in dataset_dict:
