@@ -67,7 +67,7 @@ class TestProfileWithoutSchema(object):
         }
     ])
     def test_license_id_mapping(self, data):
-        profile = DCATdeBerlinProfile()
+        profile = DCATdeBerlinProfile(graph=Graph())
         assert profile.map_license_code(data['ckan_license_id']) == data['expected']
 
 @pytest.mark.ckan_config('ckan.plugins', f'dcat {PLUGIN_NAME} berlin_dataset_schema')
