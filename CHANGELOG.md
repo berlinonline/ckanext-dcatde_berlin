@@ -2,6 +2,10 @@
 
 ## Development
 
+## [0.3.9](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.9)
+
+_(2025-05-07)_
+
 - While at this stage we should expect good license codes, be more lenient in what we accept and handöe. In case we get one which is not in our standard list of codes, we should still give useful output in the DCAT-output.
 
 ## [0.3.8](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.8)
