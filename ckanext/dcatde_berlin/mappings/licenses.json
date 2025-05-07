@@ -262,5 +262,23 @@
     "Lizenztext": "http://creativecommons.org/publicdomain/mark/1.0/",
     "OGDLizenzcode": "cc-pdm-1.0",
     "Lizenztyp": "offen"
+  },
+  "dl-de-by-2-0": {
+    "dcatde-id": "dl-by-de/2.0"
+  },
+  "dl-de-/by-2-0": {
+    "dcatde-id": "dl-by-de/2.0"
+  },
+  "dl-by-de/2.0": {
+    "dcatde-id": "dl-by-de/2.0"
+  },
+  "dl-zero-de/2.0": {
+    "dcatde-id": "dl-zero-de/2.0"
+  },
+  "CC BY 3.0 DE": {
+    "dcatde-id": "cc-by-de/3.0"
+  },
+  "CC BY 4.0 DE": {
+    "dcatde-id": "cc-by-de/4.0"
   }
 }

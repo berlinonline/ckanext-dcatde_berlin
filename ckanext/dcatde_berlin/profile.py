@@ -98,12 +98,21 @@ class DCATdeBerlinProfile(RDFProfile):
 
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
+    def map_license_code(self, ckan_license_code: str) -> str:
+        '''
+        Map license codes as they are entered in CKAN to a license code as required by DCAT-AP.de.
+        '''
+        if ckan_license_code in self.license_mapping:
+            return self.license_mapping[ckan_license_code]['dcatde-id']
+        else:
+            return ckan_license_code
+
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
         LOG.debug("dataset: {}".format(dataset_dict['name']))
         g = self.g
 
-        dist_additons = {}
+        dist_additions = {}
 
         # bind namespaces to have readable names in RDF Document
         for prefix, namespace in namespaces.items():
@@ -208,19 +217,17 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Enhance Distributions
         ## License
-        ogd_license_code = dataset_dict.get('license_id')
-        if ogd_license_code in self.license_mapping:
-            dist_additons['license_id'] = self.license_mapping[ogd_license_code]['dcatde-id']
+        dist_additions['license_id'] = self.map_license_code(dataset_dict.get('license_id'), 'unknown')
 
         ## Attribution Text
         if 'attribution_text' in dataset_dict:
-            dist_additons['attribution_text'] = dataset_dict.get('attribution_text')
+            dist_additions['attribution_text'] = dataset_dict.get('attribution_text')
 
         for resource_dict in dataset_dict.get('resources', []):
             for distribution in g.objects(dataset_ref, DCAT.distribution):
                 # Match distribution in graph and resource in ckan-dict
                 if str(distribution) == resource_uri(resource_dict):
-                    self.enhance_distribution_resource(g=g, distribution_ref=distribution, dataset_ref=dataset_ref, resource_dict=resource_dict, dist_additons=dist_additons, dataset_dict=dataset_dict)
+                    self.enhance_distribution_resource(g=g, distribution_ref=distribution, dataset_ref=dataset_ref, resource_dict=resource_dict, dist_additons=dist_additions, dataset_dict=dataset_dict)
 
         # fixes:
         # each dct:spatial must have only one locn:geometry

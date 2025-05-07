@@ -17,6 +17,8 @@ from ckanext.dcatde_berlin.tests import (
     fisbroker_datasets,
     hvd_dataset_tag,
 )
+from ckanext.dcatde_berlin.profile import DCATdeBerlinProfile
+
 
 PLUGIN_NAME = 'dcatde_berlin'
 LOG = logging.getLogger(__name__)
@@ -46,6 +48,27 @@ class TestProfileWithoutSchema(object):
         )
         assert dataset['url'].replace(" ", "+") in response.body
 
+    @pytest.mark.parametrize("data", [
+        {
+            'ckan_license_id': 'dl-zero-de/2.0',
+            'expected': 'dl-zero-de/2.0'
+        },
+        {
+            'ckan_license_id': 'dl-de-zero-2.0',
+            'expected': 'dl-zero-de/2.0'
+        },
+        {
+            'ckan_license_id': 'CC BY 3.0 DE',
+            'expected': 'cc-by-de/3.0'
+        },
+        {
+            'ckan_license_id': 'cc-by/4.0',
+            'expected': 'cc-by/4.0'
+        }
+    ])
+    def test_license_id_mapping(self, data):
+        profile = DCATdeBerlinProfile()
+        assert profile.map_license_code(data['ckan_license_id']) == data['expected']
 
 @pytest.mark.ckan_config('ckan.plugins', f'dcat {PLUGIN_NAME} berlin_dataset_schema')
 @pytest.mark.usefixtures('clean_db', 'clean_index', 'with_plugins')
