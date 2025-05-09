@@ -5,6 +5,8 @@
 - Change modelling of HVD-categorisation to DCAT-AP.de 3.0:
   - Instead of using `dct:references`, use `dcatap:hvdCategory`.
   - Use `dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>`.
+- Deprecate `politicalGeocodingURI`, use `dct:spatial`.
+- Optionally link to https://berlinonline.github.io/lod-berlin-lor/ when using `dct:spatial`
 
 ## [0.3.9](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.9)
 

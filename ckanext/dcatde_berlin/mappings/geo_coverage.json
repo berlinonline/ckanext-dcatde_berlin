@@ -7,66 +7,79 @@
     "Berlin": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/stateKey/11" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/state" ,
-        "geonames": "http://www.geonames.org/2950157"
+        "geonames": "http://www.geonames.org/2950157",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/berlin"
     },
     "Mitte": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001001" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2870912"
+        "geonames": "http://www.geonames.org/2870912",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_01"
     },
     "Friedrichshain-Kreuzberg": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001002" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336295"
+        "geonames": "http://www.geonames.org/3336295",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_02"
     },
     "Pankow": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001003" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2855597"
+        "geonames": "http://www.geonames.org/2855597",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_03"
     },
     "Charlottenburg-Wilmersdorf": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001004" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336294"
+        "geonames": "http://www.geonames.org/3336294",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_04"
     },
     "Spandau": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001005" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2830841"
+        "geonames": "http://www.geonames.org/2830841",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_05"
     },
     "Steglitz-Zehlendorf": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001006" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336293"
+        "geonames": "http://www.geonames.org/3336293",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_06"
     },
     "Tempelhof-Schöneberg": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001007" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336297"
+        "geonames": "http://www.geonames.org/3336297",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_07"
     },
     "Neukölln": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001008" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2864694"
+        "geonames": "http://www.geonames.org/2864694",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_08"
     },
     "Treptow-Köpenick": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001009" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336298"
+        "geonames": "http://www.geonames.org/3336298",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_09"
     },
     "Marzahn-Hellersdorf": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001010" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/3336296"
+        "geonames": "http://www.geonames.org/3336296",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_10"
     },
     "Lichtenberg": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001011" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2878100"
+        "geonames": "http://www.geonames.org/2878100",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_11"
     },
     "Reinickendorf": {
         "politicalGeocodingURI": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001012" ,
         "politicalGeocodingLevelURI": "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict" ,
-        "geonames": "http://www.geonames.org/2848755"
+        "geonames": "http://www.geonames.org/2848755",
+        "lod_berlin": "https://berlinonline.github.io/lod-berlin-lor/bez_12"
     }
 }

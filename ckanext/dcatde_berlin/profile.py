@@ -208,7 +208,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Nr. 66 - dct:spatial via geonames reference
         # Nr. 72 - dcatde:politicalGeocodingLevelURI
-        # Nr. 73 - dcatde:politicalGeocodingURI
+        # Nr. 73 - dcatde:politicalGeocodingURI  <-- is deprecated, use dct:spatial instead
         # passt leider nur bedingt auf Berlin (nur federal, state, administrativeDistrict)
 
         geographical_coverage = self._get_dataset_value(dataset_dict, 'geographical_coverage')
@@ -217,7 +217,9 @@ class DCATdeBerlinProfile(RDFProfile):
             if 'geonames' in coverage_object:
                 g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['geonames'])) )
             if 'politicalGeocodingURI' in coverage_object:
-                g.add( (dataset_ref, DCATDE.politicalGeocodingURI, URIRef(coverage_object['politicalGeocodingURI'])) )
+                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['politicalGeocodingURI'])) )
+            if 'lod_berlin' in coverage_object:
+                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['lod_berlin'])) )
             if 'politicalGeocodingLevelURI' in coverage_object:
                 g.add( (dataset_ref, DCATDE.politicalGeocodingLevelURI, URIRef(coverage_object['politicalGeocodingLevelURI'])) )
 
