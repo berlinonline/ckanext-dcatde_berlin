@@ -44,3 +44,5 @@ docs/_build/
 ckanenv/
 temp/
 .DS_Store
+test/
+venv/
