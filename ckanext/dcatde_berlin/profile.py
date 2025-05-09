@@ -28,6 +28,7 @@ OWL = Namespace('http://www.w3.org/2002/07/owl#')
 SPDX = Namespace('http://spdx.org/rdf/terms#')
 SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
 VOID = Namespace('http://rdfs.org/ns/void#')
+DCATAP = Namespace('http://data.europa.eu/r5r/')
 
 # own namespaces
 MDRLANG = Namespace('http://publications.europa.eu/resource/authority/language/')
@@ -45,6 +46,7 @@ namespaces = {
     # copied from ckanext.dcat.profiles
     'dct': DCT,
     'dcat': DCAT,
+    'dcatap': DCATAP,
     'adms': ADMS,
     'vcard': VCARD,
     'foaf': FOAF,
@@ -106,6 +108,35 @@ class DCATdeBerlinProfile(RDFProfile):
             return self.license_mapping[ckan_license_code]['dcatde-id']
         else:
             return ckan_license_code
+
+    def get_hvd_category(self, dataset_dict: dict) -> URIRef:
+        '''Examine the dataset_dict to get an HVD category from either the `hvd_category` attribute or
+        a special link with an `HVD_` prefix. If `hvd_category` is found, tags are ignored.
+        If no category is found, return None.'''
+        hvd_category = dataset_dict.get('hvd_category')
+        if not hvd_category:
+            # look for special 'HVD_' tags and create dct:references statements from them
+            for tag in dataset_dict['tags']:
+                tag_name = tag['name'].strip()
+                if tag_name.startswith(HVD_PREFIX):
+                    hvd_code = tag_name.split(HVD_PREFIX)[-1].strip()
+                    hvd_category = f'c_{hvd_code}'
+
+        if hvd_category:
+            return HVD[hvd_category]
+        else:
+            return None
+
+    def mark_as_hvd(self, g: Graph, subject: URIRef, category: URIRef):
+        '''Add statements to `g` about `subject` to mark it as belonging to the HVD `category`.'''
+
+        # DCAT-AP.de 3.0
+        g.add( (subject, DCATAP.applicableLegislation, URIRef('http://data.europa.eu/eli/reg_impl/2023/138/oj')) )
+        g.add( (subject, DCATAP.hvdCategory, category) )
+
+        # DCAT-AP.de 2.0
+        g.add( (subject, DCT.references, category) )
+
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
@@ -205,10 +236,9 @@ class DCATdeBerlinProfile(RDFProfile):
         # Verweis auf Referenzobjekte
         # https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verweis-auf-referenzobjekte
 
-        hvd_category = dataset_dict.get('hvd_category')
-        if hvd_category:
-            hvd_link = HVD[hvd_category]
-            g.add( (dataset_ref, DCT.references, hvd_link) )
+        hvd_link = self.get_hvd_category(dataset_dict)
+        if hvd_link:
+            self.mark_as_hvd(g, dataset_ref, hvd_link)
 
         sample_record = dataset_dict.get('sample_record')
         if sample_record:
@@ -235,15 +265,6 @@ class DCATdeBerlinProfile(RDFProfile):
             for spatial, p2, geometry in g.triples( (o1, LOCN.geometry, None)):
                 if geometry.datatype != GSP.wktLiteral:
                     g.remove( (spatial, LOCN.geometry, geometry) )
-
-        # look for special 'HVD_' tags and create dct:references statements from them
-        for tag in dataset_dict['tags']:
-            tag_name = tag['name'].strip()
-            if tag_name.startswith(HVD_PREFIX):
-                hvd_code = tag_name.split(HVD_PREFIX)[-1].strip()
-                hvd_category = f'c_{hvd_code}'
-                hvd_link = HVD[hvd_category]
-                g.add( (dataset_ref, DCT.references, hvd_link) )
 
         # custom:
 
