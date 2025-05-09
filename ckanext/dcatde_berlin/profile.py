@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 
 from ckan.common import config
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import RDF, RDFS
+from rdflib.namespace import RDF, RDFS, DCTERMS
 
 from ckanext.dcat.profiles import RDFProfile
 from ckanext.dcat.utils import resource_uri
@@ -15,7 +15,6 @@ from ckanext.dcat.utils import resource_uri
 LOG = logging.getLogger(__name__)
 
 # copied from ckanext.dcat.profiles
-DCT = Namespace("http://purl.org/dc/terms/")
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 ADMS = Namespace("http://www.w3.org/ns/adms#")
 VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
@@ -44,7 +43,7 @@ ACCRUAL_METHODS = Namespace('https://daten.berlin.de/ns/dcatext/accrual#')
 
 namespaces = {
     # copied from ckanext.dcat.profiles
-    'dct': DCT,
+    'dct': DCTERMS,
     'dcat': DCAT,
     'dcatap': DCATAP,
     'adms': ADMS,
@@ -98,6 +97,9 @@ class DCATdeBerlinProfile(RDFProfile):
         with open(os.path.join(dir_path, "mappings", "format_mapping.json")) as json_data:
             self.format_mapping = json.load(json_data)
 
+        with open(os.path.join(dir_path, "mappings", "languages.json")) as json_data:
+            self.languages = json.load(json_data)
+
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
     def map_license_code(self, ckan_license_code: str) -> str:
@@ -135,7 +137,7 @@ class DCATdeBerlinProfile(RDFProfile):
         g.add( (subject, DCATAP.hvdCategory, category) )
 
         # DCAT-AP.de 2.0
-        g.add( (subject, DCT.references, category) )
+        g.add( (subject, DCTERMS.references, category) )
 
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
@@ -167,14 +169,14 @@ class DCATdeBerlinProfile(RDFProfile):
         publisher_url = self._get_dataset_value(dataset_dict, 'url')
         # first, remove the publishers added by the generic RDF profile, as they
         # are based on the CKAN Organization
-        for publisher in g.objects(dataset_ref, DCT.publisher):
-            g.remove( (dataset_ref, DCT.publisher, publisher) )
+        for publisher in g.objects(dataset_ref, DCTERMS.publisher):
+            g.remove( (dataset_ref, DCTERMS.publisher, publisher) )
 
         g.add( (publisher_ref, RDF.type, FOAF.Organization) )
         g.add( (publisher_ref, FOAF.name, Literal(publisher_name)) )
         # if publisher_url:
         #     g.add( (publisher_ref, FOAF.homepage, URIRef(publisher_url)) )
-        g.add( (dataset_ref, DCT.publisher, publisher_ref) )
+        g.add( (dataset_ref, DCTERMS.publisher, publisher_ref) )
 
         # Nr. 45 - Kategorie
         groups = self._get_dataset_value(dataset_dict, 'groups')
@@ -193,12 +195,12 @@ class DCATdeBerlinProfile(RDFProfile):
         # Nr. 48 - conformsTo (Application Profile der Metadaten)
         dcatapde_version = config.get('ckanext.dcatde.version')
         if dcatapde_version:
-            g.add((dataset_ref, DCT.conformsTo, URIRef("{}{}/".format(DCATDE, dcatapde_version))))
+            g.add((dataset_ref, DCTERMS.conformsTo, URIRef("{}{}/".format(DCATDE, dcatapde_version))))
 
         # Nr. 49 - 52 (Urheber, Verwalter, Bearbeiter, Autor) - we don't know this
 
         # Nr. 59 - Sprache
-        g.add( (dataset_ref, DCT.language, MDRLANG.DEU) )
+        g.add( (dataset_ref, DCTERMS.language, MDRLANG.DEU) )
 
         # Nr. 61 - Provenienz
 
@@ -213,7 +215,7 @@ class DCATdeBerlinProfile(RDFProfile):
         if geographical_coverage in self.geo_coverage:
             coverage_object = self.geo_coverage[geographical_coverage]
             if 'geonames' in coverage_object:
-                g.add( (dataset_ref, DCT.spatial, URIRef(coverage_object['geonames'])) )
+                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['geonames'])) )
             if 'politicalGeocodingURI' in coverage_object:
                 g.add( (dataset_ref, DCATDE.politicalGeocodingURI, URIRef(coverage_object['politicalGeocodingURI'])) )
             if 'politicalGeocodingLevelURI' in coverage_object:
@@ -239,7 +241,7 @@ class DCATdeBerlinProfile(RDFProfile):
         sample_record = dataset_dict.get('sample_record')
         if sample_record:
             sample_record_link = MUSTERD[sample_record]
-            g.add( (dataset_ref, DCT.references, sample_record_link) )
+            g.add( (dataset_ref, DCTERMS.references, sample_record_link) )
 
         # Enhance Distributions
         ## License
@@ -257,7 +259,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # fixes:
         # each dct:spatial must have only one locn:geometry
-        for s1, p1, o1 in g.triples( (dataset_ref, DCT.spatial, None) ):
+        for s1, p1, o1 in g.triples( (dataset_ref, DCTERMS.spatial, None) ):
             for spatial, p2, geometry in g.triples( (o1, LOCN.geometry, None)):
                 if geometry.datatype != GSP.wktLiteral:
                     g.remove( (spatial, LOCN.geometry, geometry) )
@@ -268,7 +270,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
         source = self._get_dataset_value(dataset_dict, 'berlin_source')
         if (source):
-            g.add( (dataset_ref, DCT.accrualMethod, ACCRUAL_METHODS[source]) )
+            g.add( (dataset_ref, DCTERMS.accrualMethod, ACCRUAL_METHODS[source]) )
 
     def enhance_distribution_resource(self, g: Graph, distribution_ref: URIRef, dataset_ref: URIRef, resource_dict: dict, dist_additons: dict, dataset_dict: dict):
 
@@ -281,15 +283,25 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Nr. 77 - License (derived from dataset license)
         if 'license_id' in dist_additons:
-            g.add( (distribution_ref, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
+            g.add( (distribution_ref, DCTERMS.license, DCATDE_LIC[dist_additons['license_id']]) )
 
         # Nr. 93 - dcatde:licenseAttributionByText
         if 'attribution_text' in dist_additons:
             g.add( (distribution_ref, DCATDE.licenseAttributionByText, Literal(dist_additons['attribution_text'])) )
 
+        # Language must be a URI, not a Literal
+        for language_literal in g.objects(distribution_ref, DCTERMS.language):
+            if isinstance(language_literal, Literal):
+                # if the language is a literal, remove it and replace with a URI
+                g.remove( (distribution_ref, DCTERMS.language, language_literal) )
+
+                language_res = self.languages.get(language_literal.toPython(), None)
+                if language_res:
+                    g.add( (distribution_ref, DCTERMS.language, URIRef(language_res)) )
+
         # Nr. 78 - Format
-        for format_string in g.objects(distribution_ref, DCT['format']):
-            g.remove( (distribution_ref, DCT['format'], Literal(format_string)) )
+        for format_string in g.objects(distribution_ref, DCTERMS.format):
+            g.remove( (distribution_ref, DCTERMS.format, Literal(format_string)) )
             format_string = format_string.toPython()
             if format_string in SERVICE_TYPES:
 
@@ -302,14 +314,14 @@ class DCATdeBerlinProfile(RDFProfile):
                 g.add( (dataset_ref, DCAT.distribution, service_dist_res) )
 
                 g.add( (service_dist_res, RDF.type, DCAT.Distribution) )
-                g.add( (service_dist_res, DCT['format'], FILE_TYPES['XML']) )
-                g.add( (service_dist_res, DCT.accessService, service_res) )
-                g.add( (service_dist_res, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
-                g.add( (service_dist_res, DCT.title, Literal(f"Distribution für den Datenservice für '{dataset_dict['title']}'")) )
+                g.add( (service_dist_res, DCTERMS.format, FILE_TYPES['XML']) )
+                g.add( (service_dist_res, DCAT.accessService, service_res) )
+                g.add( (service_dist_res, DCTERMS.license, DCATDE_LIC[dist_additons['license_id']]) )
+                g.add( (service_dist_res, DCTERMS.title, Literal(f"Distribution für den Datenservice für '{dataset_dict['title']}'")) )
 
                 g.add( (service_res, RDF.type, DCAT.DataService) )
-                g.add( (service_res, DCT.license, DCATDE_LIC[dist_additons['license_id']]) )
-                g.add( (service_res, DCT.title, Literal(f"Datenservice für '{dataset_dict['title']}'")) )
+                g.add( (service_res, DCTERMS.license, DCATDE_LIC[dist_additons['license_id']]) )
+                g.add( (service_res, DCTERMS.title, Literal(f"Datenservice für '{dataset_dict['title']}'")) )
 
                 res_url = resource_dict['url']
                 res_url_query = urlparse(res_url).query
@@ -327,7 +339,7 @@ class DCATdeBerlinProfile(RDFProfile):
 
             elif format_string in self.format_mapping:
                 format_uri = self.format_mapping[format_string]['uri']
-                g.add( (distribution_ref, DCT['format'], URIRef(format_uri)) )
+                g.add( (distribution_ref, DCTERMS.format, URIRef(format_uri)) )
             else:
                 LOG.warning("No mapping found for format string '{}'".format(format_string))
 
