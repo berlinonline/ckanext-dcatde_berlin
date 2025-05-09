@@ -199,10 +199,6 @@ class DCATdeBerlinProfile(RDFProfile):
 
         # Nr. 59 - Sprache
         g.add( (dataset_ref, DCT.language, MDRLANG.DEU) )
-        # MDRLANG.DEU is not dereferencable, so we add some additional
-        # triples that link to the downloadable source:
-        g.add( (MDRLANG.DEU, RDFS.isDefinedBy, URIRef(MDRLANG)) )
-        g.add( (URIRef(MDRLANG), RDFS.seeAlso, URIRef("http://publications.europa.eu/mdr/resource/authority/language/skos-ap-eu/languages-skos-ap-act.rdf")) )
 
         # Nr. 61 - Provenienz
 
