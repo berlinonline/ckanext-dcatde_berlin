@@ -13,6 +13,7 @@ _(2025-05-12)_
 - Optionally link to https://berlinonline.github.io/lod-berlin-lor/ when using `dct:spatial`.
 - Use `Namespace` definitions from `rdflib.namespace` instead of defining them ourselves, whenever possible.
 - Add `dcat:temporalResolution` statements based on our `temporal_granularity` attribute.
+- In distributions, use URIs instead of literals for language and media type information.
 
 ## [0.3.9](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.9)
 

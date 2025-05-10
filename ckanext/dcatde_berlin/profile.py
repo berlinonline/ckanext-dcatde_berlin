@@ -30,6 +30,7 @@ DCATDE = Namespace('http://dcat-ap.de/def/dcatde/')
 DCATDE_LIC = Namespace('http://dcat-ap.de/def/licenses/')
 DCATDE_CONTRIBUTORS = Namespace('http://dcat-ap.de/def/contributors/')
 FILE_TYPES = Namespace('http://publications.europa.eu/resource/authority/file-type/')
+MEDIA_TYPES = Namespace('https://www.iana.org/assignments/media-types/')
 HVD = Namespace('http://data.europa.eu/bna/')
 MUSTERD = Namespace('https://musterdatenkatalog.de/def/musterdatensatz/')
 
@@ -302,7 +303,7 @@ class DCATdeBerlinProfile(RDFProfile):
         if 'attribution_text' in dist_additons:
             g.add( (distribution_ref, DCATDE.licenseAttributionByText, Literal(dist_additons['attribution_text'])) )
 
-        # Language must be a URI, not a Literal
+        # language must be a URI, not a literal
         for language_literal in g.objects(distribution_ref, DCTERMS.language):
             if isinstance(language_literal, Literal):
                 # if the language is a literal, remove it and replace with a URI
@@ -355,6 +356,15 @@ class DCATdeBerlinProfile(RDFProfile):
                 g.add( (distribution_ref, DCTERMS.format, URIRef(format_uri)) )
             else:
                 LOG.warning("No mapping found for format string '{}'".format(format_string))
+
+        # media type must be a URI, not a literal
+        for media_type in g.objects(distribution_ref, DCAT.mediaType):
+            if isinstance(media_type, Literal):
+                # if the media type is a literal, remove it and replace with a URI
+                g.remove( (distribution_ref, DCAT.mediaType, media_type) )
+
+                media_type_res = MEDIA_TYPES[media_type.toPython()]
+                g.add( (distribution_ref, DCAT.mediaType, media_type_res) )
 
 
     def remove_distribution(self, g: Graph, distribution_ref: URIRef):
