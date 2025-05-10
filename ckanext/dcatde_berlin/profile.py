@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 
 from ckan.common import config
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, FOAF, OWL, RDF, RDFS, SKOS, TIME, VOID
+from rdflib.namespace import DCAT, DCTERMS, FOAF, OWL, RDF, RDFS, SKOS, TIME, VOID, XSD
 
 from ckanext.dcat.profiles import RDFProfile
 from ckanext.dcat.utils import resource_uri
@@ -94,6 +94,9 @@ class DCATdeBerlinProfile(RDFProfile):
         with open(os.path.join(dir_path, "mappings", "languages.json")) as json_data:
             self.languages = json.load(json_data)
 
+        with open(os.path.join(dir_path, "mappings", "temporal_granularities.json")) as json_data:
+            self.temporal_granularities = json.load(json_data)
+
         super(DCATdeBerlinProfile, self).__init__(graph, compatibility_mode)
 
     def map_license_code(self, ckan_license_code: str) -> str:
@@ -133,6 +136,13 @@ class DCATdeBerlinProfile(RDFProfile):
         # DCAT-AP.de 2.0
         g.add( (subject, DCTERMS.references, category) )
 
+    def add_spatial_statements(self, g: Graph, subject: URIRef, location: URIRef):
+        '''Connect `subject` with `location` via `dcterms:spatial`, and assign the type
+        `dcterms:Location` to `location` (to be compliant with
+        https://www.dcat-ap.de/def/dcatde/3.0/spec/#datensatz-raumliche-abdeckung).'''
+
+        g.add( (subject, DCTERMS.spatial, location) )
+        g.add( (location, RDF.type, DCTERMS.Location) )
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
 
@@ -209,11 +219,11 @@ class DCATdeBerlinProfile(RDFProfile):
         if geographical_coverage in self.geo_coverage:
             coverage_object = self.geo_coverage[geographical_coverage]
             if 'geonames' in coverage_object:
-                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['geonames'])) )
+                self.add_spatial_statements(g, dataset_ref, URIRef(coverage_object['geonames']))
             if 'politicalGeocodingURI' in coverage_object:
-                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['politicalGeocodingURI'])) )
+                self.add_spatial_statements(g, dataset_ref, URIRef(coverage_object['politicalGeocodingURI']))
             if 'lod_berlin' in coverage_object:
-                g.add( (dataset_ref, DCTERMS.spatial, URIRef(coverage_object['lod_berlin'])) )
+                self.add_spatial_statements(g, dataset_ref, URIRef(coverage_object['lod_berlin']))
             if 'politicalGeocodingLevelURI' in coverage_object:
                 g.add( (dataset_ref, DCATDE.politicalGeocodingLevelURI, URIRef(coverage_object['politicalGeocodingLevelURI'])) )
 
@@ -259,6 +269,13 @@ class DCATdeBerlinProfile(RDFProfile):
             for spatial, p2, geometry in g.triples( (o1, LOCN.geometry, None)):
                 if geometry.datatype != GSP.wktLiteral:
                     g.remove( (spatial, LOCN.geometry, geometry) )
+
+        # https://www.dcat-ap.de/def/dcatde/3.0/spec/#datensatz-zeitliche-auflosung
+
+        temporal_granularity = dataset_dict.get('temporal_granularity', 'Keine')
+        if temporal_granularity != 'Keine':
+            temporal_resolution = Literal(self.temporal_granularities[temporal_granularity], datatype=XSD.duration)
+            g.add( (dataset_ref, DCAT.temporalResolution, temporal_resolution) )
 
         # custom:
 

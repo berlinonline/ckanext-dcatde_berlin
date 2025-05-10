@@ -1,0 +1,11 @@
+{
+    "5 Jahre": "P5Y",
+    "Jahr": "P1Y",
+    "Quartal": "P3M",
+    "Monat": "P1M",
+    "Woche": "P7D",
+    "Tag": "P1D",
+    "Stunde": "PT1H",
+    "Minute": "PT1M",
+    "Sekunde": "PT1S"
+}
