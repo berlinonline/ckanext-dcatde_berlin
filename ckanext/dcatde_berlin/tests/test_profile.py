@@ -87,9 +87,10 @@ class TestProfileWithSchema(object):
         dataset = berlin_dataset['dataset']
         g, base_url = get_graph_and_base_url(app, dataset['name'])
         dataset_res = URIRef(path.join(base_url, 'dataset', dataset['id']))
-        assert (dataset_res, DCATDE.politicalGeocodingURI, URIRef('http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001001')) in g
+        assert (dataset_res, DCTERMS.spatial, URIRef('http://dcat-ap.de/def/politicalGeocoding/regionalKey/110010001001')) in g
         assert (dataset_res, DCATDE.politicalGeocodingLevelURI, URIRef('http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict')) in g
         assert (dataset_res, DCTERMS.spatial, URIRef('http://www.geonames.org/2870912')) in g
+        assert (dataset_res, DCTERMS.spatial, URIRef('https://berlinonline.github.io/lod-berlin-lor/bez_01')) in g
 
     def test_legal_basis_was_mapped(self, app, fisbroker_datasets):
         '''Check that, in certain cases, the legal basis for publishing Open Data has been derived from the organization.'''
