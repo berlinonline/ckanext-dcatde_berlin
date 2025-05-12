@@ -23,7 +23,7 @@ class Dcatde_BerlinPlugin(plugins.SingletonPlugin):
         config['ckanext.dcatde.contributorid'] = config.get(
         'ckanext.dcatde.contributorid','berlinOpenData')
         config['ckanext.dcatde.version'] = config.get(
-        'ckanext.dcatde.version', '2.0')
+        'ckanext.dcatde.version', '3.0')
         config['ckanext.dcatde_berlin.formats'] = config.get(
         'ckanext.dcatde_berlin.formats', 'ttl xml jsonld rdf')
         config['ckanext.dcatde_berlin.additional_endpoints'] = config.get(

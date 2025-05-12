@@ -17,6 +17,7 @@ _(2025-05-12)_
 - Add `dct:publisher` to `dcat:DataService` instances.
 Currently all of those are from GDI Berlin/FIS-Broker, so the publisher is always "Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen".
 - Publishers are now RDF resources rather than blank nodes, with a URN based on their name.
+- Announce that we're outputting DCAT-AP.de 3.0.
 
 
 ## [0.3.9](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.9)
