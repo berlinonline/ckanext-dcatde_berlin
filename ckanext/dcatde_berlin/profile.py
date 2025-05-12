@@ -3,6 +3,7 @@
 import json
 import logging
 import os
+import uuid
 from urllib.parse import urlparse
 
 from ckan.common import config
@@ -169,9 +170,9 @@ class DCATdeBerlinProfile(RDFProfile):
             g.add((dataset_ref, DCATDE.contributorID, URIRef("{}{}".format(DCATDE_CONTRIBUTORS, contributorId))))
 
         # Nr. 44 - Publisher
-        publisher_ref = BNode()
         publisher_name = self._get_dataset_value(dataset_dict, 'author')
-        publisher_url = self._get_dataset_value(dataset_dict, 'url')
+        publisher_uuid = uuid.uuid5(name=publisher_name, namespace=uuid.NAMESPACE_URL)
+        publisher_ref = URIRef(publisher_uuid.urn)
         # first, remove the publishers added by the generic RDF profile, as they
         # are based on the CKAN Organization
         for publisher in g.objects(dataset_ref, DCTERMS.publisher):
@@ -336,6 +337,15 @@ class DCATdeBerlinProfile(RDFProfile):
                 g.add( (service_res, RDF.type, DCAT.DataService) )
                 g.add( (service_res, DCTERMS.license, DCATDE_LIC[dist_additons['license_id']]) )
                 g.add( (service_res, DCTERMS.title, Literal(f"Datenservice für '{dataset_dict['title']}'")) )
+                # TODO: "dcat:DataService: MUSS einen dcterms:publisher haben."
+                if (dataset_dict['berlin_source'] == 'harvest-fisbroker'):
+                    # all dataservices that are part of the GDI Berlin/FIS-Broker have the same publisher
+                    service_publisher_name = "Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen"
+                    service_publisher_uuid = uuid.uuid5(name=service_publisher_name, namespace=uuid.NAMESPACE_URL)
+                    service_publisher_ref = URIRef(service_publisher_uuid.urn)
+                    g.add( (service_publisher_ref, RDF.type, FOAF.Organization) )
+                    g.add( (service_publisher_ref, FOAF.name, Literal(service_publisher_name, lang='de')) )
+                    g.add( (service_res, DCTERMS.publisher, service_publisher_ref) )
 
                 res_url = resource_dict['url']
                 res_url_query = urlparse(res_url).query

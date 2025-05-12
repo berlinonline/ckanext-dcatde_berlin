@@ -14,6 +14,10 @@ _(2025-05-12)_
 - Use `Namespace` definitions from `rdflib.namespace` instead of defining them ourselves, whenever possible.
 - Add `dcat:temporalResolution` statements based on our `temporal_granularity` attribute.
 - In distributions, use URIs instead of literals for language and media type information.
+- Add `dct:publisher` to `dcat:DataService` instances.
+Currently all of those are from GDI Berlin/FIS-Broker, so the publisher is always "Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen".
+- Publishers are now RDF resources rather than blank nodes, with a URN based on their name.
+
 
 ## [0.3.9](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.3.9)
 
