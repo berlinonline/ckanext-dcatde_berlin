@@ -2,6 +2,8 @@
 
 ## Development
 
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+
 ## [0.4.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.0)
 
 _(2025-05-12)_
