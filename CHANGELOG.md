@@ -10,6 +10,7 @@ _(2025-11-27)_
 - Fix failing Github CI (install curl).
 
 - Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
 
 ## [0.4.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.0)
 
