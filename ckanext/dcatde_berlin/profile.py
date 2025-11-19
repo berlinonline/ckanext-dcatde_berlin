@@ -34,6 +34,7 @@ FILE_TYPES = Namespace('http://publications.europa.eu/resource/authority/file-ty
 MEDIA_TYPES = Namespace('https://www.iana.org/assignments/media-types/')
 HVD = Namespace('http://data.europa.eu/bna/')
 MUSTERD = Namespace('https://musterdatenkatalog.de/def/musterdatensatz/')
+BLNAL = Namespace('https://berlin.github.io/lod-vocabulary/blnal/')
 
 ACCRUAL_METHODS = Namespace('https://daten.berlin.de/ns/dcatext/accrual#')
 
@@ -61,6 +62,7 @@ namespaces = {
     'file-type': FILE_TYPES ,
     'hvd': HVD ,
     'musterd': MUSTERD ,
+    'blnal': BLNAL ,
 }
 
 HVD_PREFIX = 'HVD_'
@@ -287,6 +289,12 @@ class DCATdeBerlinProfile(RDFProfile):
         source = self._get_dataset_value(dataset_dict, 'berlin_source')
         if (source):
             g.add( (dataset_ref, DCTERMS.accrualMethod, ACCRUAL_METHODS[source]) )
+
+        # add information about dataset anoymization
+
+        data_anonymized = dataset_dict.get('data_anonymized')
+        if data_anonymized is not None:
+            g.add( (dataset_ref, BLNAL.dataAnonymized, Literal(data_anonymized)) )
 
     def enhance_distribution_resource(self, g: Graph, distribution_ref: URIRef, dataset_ref: URIRef, resource_dict: dict, dist_additons: dict, dataset_dict: dict):
 
