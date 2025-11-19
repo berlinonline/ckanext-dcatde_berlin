@@ -9,6 +9,7 @@ _(2025-11-27)_
 - Set env variables for database and Solr index in scripts for running unit tests locally.
 - Fix failing Github CI (install curl).
 
+- Expose the new `data_anonymized` field in the metadata schema as [blnal:dataAnonymized](https://berlin.github.io/lod-vocabulary/blnal/dataAnonmized).
 - Set env variables for database and Solr index in scripts for running unit tests locally.
 - Fix failing Github CI (install curl).
 
