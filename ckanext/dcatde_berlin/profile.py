@@ -290,7 +290,15 @@ class DCATdeBerlinProfile(RDFProfile):
         if (source):
             g.add( (dataset_ref, DCTERMS.accrualMethod, ACCRUAL_METHODS[source]) )
 
-        # add information about dataset anoymization
+        # add information about personal data and dataset anoymization
+
+        personal_data = dataset_dict.get('personal_data')
+        if personal_data is not None:
+            g.add( (dataset_ref, BLNAL.includesPersonalData, Literal(personal_data)) )
+
+        personal_data_exemption = dataset_dict.get('personal_data_exemption')
+        if personal_data_exemption is not None:
+            g.add( (dataset_ref, BLNAL.personalDataExemption, Literal(personal_data_exemption)) )
 
         data_anonymized = dataset_dict.get('data_anonymized')
         if data_anonymized is not None:
