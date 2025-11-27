@@ -1,6 +1,13 @@
 # Changelog
 
 ## Development
+## [0.4.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.1)
+
+_(2025-11-27)_
+
+- Expose the new `data_anonymized` field in the metadata schema as [blnal:dataAnonymized](https://berlin.github.io/lod-vocabulary/blnal/dataAnonmized).
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
 
 ## [0.4.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.0)
 
