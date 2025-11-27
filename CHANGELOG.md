@@ -9,6 +9,10 @@ _(2025-11-27)_
 - Set env variables for database and Solr index in scripts for running unit tests locally.
 - Fix failing Github CI (install curl).
 
+- Expose the new `personal_data`, `personal_data_exemption` and `data_anonymized` fields in the metadata schema as [blnal:includesPersonalData](https://berlin.github.io/lod-vocabulary/blnal/includesPersonalData), [blnal:personalDataExemption](https://berlin.github.io/lod-vocabulary/blnal/personalDataExemption) and [blnal:dataAnonymized](https://berlin.github.io/lod-vocabulary/blnal/dataAnonmized), respectively.
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
+
 ## [0.4.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.0)
 
 _(2025-05-12)_
