@@ -89,9 +89,6 @@ class DCATdeBerlinProfile(RDFProfile):
         with open(os.path.join(dir_path, "mappings", "geo_coverage.json")) as json_data:
             self.geo_coverage = json.load(json_data)
 
-        with open(os.path.join(dir_path, "mappings", "org2legalBasis.json")) as json_data:
-            self.legalBasis = json.load(json_data)
-
         with open(os.path.join(dir_path, "mappings", "format_mapping.json")) as json_data:
             self.format_mapping = json.load(json_data)
 
