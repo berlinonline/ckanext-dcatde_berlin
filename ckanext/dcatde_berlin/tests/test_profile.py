@@ -92,16 +92,6 @@ class TestProfileWithSchema(object):
         assert (dataset_res, DCTERMS.spatial, URIRef('http://www.geonames.org/2870912')) in g
         assert (dataset_res, DCTERMS.spatial, URIRef('https://berlinonline.github.io/lod-berlin-lor/bez_01')) in g
 
-    def test_legal_basis_was_mapped(self, app, fisbroker_datasets):
-        '''Check that, in certain cases, the legal basis for publishing Open Data has been derived from the organization.'''
-        dataset = fisbroker_datasets['fb'][0]
-        response = app.get(
-            url=f"/dataset/{dataset['name']}.ttl",
-            follow_redirects=False,
-            status=200,
-        )
-        assert "Nutzungsbestimmungen für die Bereitstellung von Geodaten des Landes Berlin (GeoNutzV-Berlin)" in response.body
-
     def test_license_id_was_mapped(self, app, berlin_dataset):
         '''Check that the license_id was mapped to a dcat-ap.de license URI.'''
         dataset = berlin_dataset['dataset']

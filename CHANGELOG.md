@@ -13,6 +13,24 @@ _(2025-11-27)_
 - Set env variables for database and Solr index in scripts for running unit tests locally.
 - Fix failing Github CI (install curl).
 
+## [0.4.2](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.12)
+
+_(2025-11-27)_
+
+- Replace the deprecated [dcatde:legalbasis](https://www.dcat-ap.de/def/dcatde/3.0/spec/#datensatz-rechtsgrundlage-zugangseroffnung) with [dcatap:applicableLegislation](http://data.europa.eu/r5r/applicableLegislation).
+
+## [0.4.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.1)
+
+_(2025-11-27)_
+
+- Expose the new `data_anonymized` field in the metadata schema as [blnal:dataAnonymized](https://berlin.github.io/lod-vocabulary/blnal/dataAnonmized).
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
+
+- Expose the new `personal_data`, `personal_data_exemption` and `data_anonymized` fields in the metadata schema as [blnal:includesPersonalData](https://berlin.github.io/lod-vocabulary/blnal/includesPersonalData), [blnal:personalDataExemption](https://berlin.github.io/lod-vocabulary/blnal/personalDataExemption) and [blnal:dataAnonymized](https://berlin.github.io/lod-vocabulary/blnal/dataAnonmized), respectively.
+- Set env variables for database and Solr index in scripts for running unit tests locally.
+- Fix failing Github CI (install curl).
+
 ## [0.4.0](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.0)
 
 _(2025-05-12)_
