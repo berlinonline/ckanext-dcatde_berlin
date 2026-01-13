@@ -1,6 +1,13 @@
 # Changelog
 
 ## Development
+
+## [0.4.2](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.12)
+
+_(2025-11-27)_
+
+- Replace the deprecated [dcatde:legalbasis](https://www.dcat-ap.de/def/dcatde/3.0/spec/#datensatz-rechtsgrundlage-zugangseroffnung) with [dcatap:applicableLegislation](http://data.europa.eu/r5r/applicableLegislation).
+
 ## [0.4.1](https://github.com/berlinonline/ckanext-dcatde_berlin/releases/tag/0.4.1)
 
 _(2025-11-27)_

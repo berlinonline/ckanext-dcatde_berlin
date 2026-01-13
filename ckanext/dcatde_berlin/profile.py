@@ -234,13 +234,10 @@ class DCATdeBerlinProfile(RDFProfile):
 
 
 
-        # Nr. 75 - dcatde:legalbasisText
+        # dcatap:applicableLegislation (replaces dcatde:legalbasisText)
 
-        legalbasisText = self.legalBasis['default']
-        org = dataset_dict.get('organization', {})
-        if org and org['name'] in self.legalBasis['mapping']:
-            legalbasisText = self.legalBasis['mapping'][org['name']]
-        g.add( (dataset_ref, DCATDE.legalbasisText, Literal(legalbasisText)) )
+        legislation = BLNAL.egovg
+        g.add( (dataset_ref, DCATAP.applicableLegislation, legislation) )
 
         # Verweis auf Referenzobjekte
         # https://www.dcat-ap.de/def/dcatde/2.0/implRules/#verweis-auf-referenzobjekte
